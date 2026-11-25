@@ -3,3 +3,37 @@ procps_pkg: "procps"
 centos_repo_baseurl: "https://vault.centos.org"
 cleanup_yum_conf_docs_settings: true
 ignore_ansible_install_errors: false
+# The environment is a container with systemd as PID 1
+init_container: false
+# tmt tasks (tmt_is_needed), ALTS-6
+tmt_is_needed: false
+# Must be installed, the stage can't run without them
+tmt_packages:
+  - tmt
+  - beakerlib
+  - git
+  - openssh-server
+  - procps-ng
+# Tests expect them from the CentOS CI machines and don't require them;
+# a package missing on a platform is skipped (initscripts-service is
+# not in AlmaLinux 8, initscripts gives "service" there)
+tmt_extra_packages:
+  - diffutils
+  - glibc-all-langpacks
+  - audit
+  - hostname
+  - iproute
+  - initscripts-service
+  - initscripts
+  - yum-utils
+  - make
+  - gcc
+  - java-devel
+  - policycoreutils
+  - gnupg2
+  # bind tests
+  - logrotate
+  - openssl
+  - man-db
+# The only line of /etc/fstab when the container has none or an empty one
+tmt_fstab_comment: "# /etc/fstab: empty in the container, tests print it (cups lp)"

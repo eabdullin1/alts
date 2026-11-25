@@ -1,4 +1,15 @@
 ---
+# Docker environments are AlmaLinux init containers, systemd is PID 1
+# (D-21, ALTS-11): let it finish booting before dnf and the tests
+- name: Wait for systemd to start (init containers)
+  command: systemctl is-system-running
+  register: init_systemd_state
+  until: init_systemd_state.stdout in ['running', 'degraded']
+  retries: 60
+  delay: 5
+  changed_when: false
+  failed_when: init_systemd_state.stdout not in ['running', 'degraded']
+  when: init_container | bool
 
 - name: Initial fact set
   set_fact:
@@ -247,3 +258,87 @@
   # Build repositories URLs contain credentials
   no_log: true
   when: repositories is defined and (repositories | length > 0)
+
+# tmt tasks (D-21, ALTS-6, ALTS-11, ALTS-13)
+- name: Install dnf plugins (tmt tasks)
+  yum:
+    name: dnf-plugins-core
+    state: present
+    lock_timeout: 300
+  register: pkg_mgr_result
+  until: pkg_mgr_retry_done | bool
+  retries: "{{ pkg_mgr_retries }}"
+  delay: "{{ pkg_mgr_retry_delay }}"
+  when: tmt_is_needed | bool
+
+# "prepare: how: feature" of tmt enables CRB only on RHEL and
+# CentOS Stream (ALTS-13)
+- name: Enable CRB repository (tmt tasks)
+  command: >-
+    dnf config-manager --set-enabled
+    {{ 'powertools' if ansible_facts.distribution_major_version == '8' else 'crb' }}
+  when: tmt_is_needed | bool
+
+- name: Install tmt and beakerlib (tmt tasks)
+  yum:
+    name: "{{ tmt_packages }}"
+    state: present
+    enablerepo: epel
+    lock_timeout: 300
+  register: pkg_mgr_result
+  until: pkg_mgr_retry_done | bool
+  retries: "{{ pkg_mgr_retries }}"
+  delay: "{{ pkg_mgr_retry_delay }}"
+  when: tmt_is_needed | bool
+
+- name: Install packages tests expect from CI machines (tmt tasks)
+  command: >-
+    dnf -y --setopt=strict=0 install {{ tmt_extra_packages | join(' ') }}
+  register: pkg_mgr_result
+  until: pkg_mgr_retry_done | bool
+  retries: "{{ pkg_mgr_retries }}"
+  delay: "{{ pkg_mgr_retry_delay }}"
+  when: tmt_is_needed | bool
+
+- name: Replace curl-minimal with curl (tmt tasks)
+  shell: >-
+    if rpm -q curl-minimal >/dev/null; then
+    dnf -y swap curl-minimal curl; fi
+  register: pkg_mgr_result
+  until: pkg_mgr_retry_done | bool
+  retries: "{{ pkg_mgr_retries }}"
+  delay: "{{ pkg_mgr_retry_delay }}"
+  when: tmt_is_needed | bool
+
+# Tests expect a running sshd like on the CI machines, e.g. the
+# rsync test /Regression/RHEL-104404-... connects to its own address
+- name: Enable and start sshd (tmt tasks)
+  systemd:
+    name: sshd
+    enabled: true
+    state: started
+  when: tmt_is_needed | bool
+
+# /etc/fstab must exist and not be empty: cups tests print it with lp,
+# and lp refuses an empty file ("No file in print request")
+- name: Make /etc/fstab not empty (tmt tasks)
+  shell: |
+    if [ ! -s /etc/fstab ]; then
+      echo '{{ tmt_fstab_comment }}' > /etc/fstab
+      chmod 0644 /etc/fstab
+      echo created
+    fi
+  register: tmt_fstab
+  changed_when: "'created' in tmt_fstab.stdout"
+  when: tmt_is_needed | bool
+
+- name: Create tmt directories (tmt tasks)
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  loop:
+    - /var/share/test-artifacts
+    - /var/tmp/tmt
+    - /var/tmp/tmt-tests
+  when: tmt_is_needed | bool

@@ -1,0 +1,75 @@
+# execute/results.yaml of the plan as tmt 1.78 writes it. The live run had
+# the first and the last test (both pass); the reboot test was left out of
+# it by the skip rule and is added here as it would be reported if it ran.
+- name: /cups-public/Regression/bz491190-sendff-doesnt-work
+  serial-number: 1
+  fmf-id:
+    name: /Regression/bz491190-sendff-doesnt-work
+    path: /
+  context: {}
+  ids:
+    extra-nitrate: null
+    extra-task: /CoreOS/cups/Regression/bz491190-sendff-doesnt-work
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/cups-public/Regression/bz491190-sendff-doesnt-work-1/output.txt
+  - data/guest/default-0/cups-public/Regression/bz491190-sendff-doesnt-work-1/journal.txt
+  start-time: '2026-11-26T12:58:10+00:00'
+  end-time: '2026-11-26T12:58:31+00:00'
+  duration: 00:00:21
+  data-path: data/guest/default-0/cups-public/Regression/bz491190-sendff-doesnt-work-1/data
+  check: []
+  subresult: []
+- name: /cups-public/Sanity/cups-systemd-units-smoke
+  serial-number: 2
+  fmf-id:
+    name: /Sanity/cups-systemd-units-smoke
+    path: /
+  context: {}
+  ids:
+    extra-nitrate: null
+    extra-task: /CoreOS/cups/Sanity/cups-systemd-units-smoke
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: error
+  note:
+  - reboot
+  log:
+  - data/guest/default-0/cups-public/Sanity/cups-systemd-units-smoke-2/output.txt
+  start-time: '2026-11-26T12:58:31+00:00'
+  end-time: '2026-11-26T12:58:40+00:00'
+  duration: 00:00:09
+  data-path: data/guest/default-0/cups-public/Sanity/cups-systemd-units-smoke-2/data
+  check: []
+  subresult: []
+- name: /cups-extra/Regression/bz1659111-correct-permissions-on-logs
+  serial-number: 3
+  fmf-id:
+    name: /Regression/bz1659111-correct-permissions-on-logs
+    path: /
+  context: {}
+  ids:
+    extra-nitrate: null
+    extra-task: /CoreOS/cups/Regression/bz1659111-correct-permissions-on-logs
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/cups-extra/Regression/bz1659111-correct-permissions-on-logs-3/output.txt
+  - data/guest/default-0/cups-extra/Regression/bz1659111-correct-permissions-on-logs-3/journal.txt
+  start-time: '2026-11-26T12:58:40+00:00'
+  end-time: '2026-11-26T12:59:02+00:00'
+  duration: 00:00:22
+  data-path: data/guest/default-0/cups-extra/Regression/bz1659111-correct-permissions-on-logs-3/data
+  check: []
+  subresult: []

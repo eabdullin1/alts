@@ -1,0 +1,136 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:23 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:23 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:23 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:23 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:23 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:23 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.0WaoC7G7Mu'
+/tmp/tmp.0WaoC7G7Mu /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1050916-malformed-output-when-coloring-is-on
+:: [ 20:47:23 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.0WaoC7G7Mu' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.oIOh24Gdwr into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:23 ] :: [  BEGIN   ] :: Running command with coloring :: actually running 'echo čř | grep -P '\p{L}' --color=yes > output'
+:: [ 20:47:23 ] :: [   PASS   ] :: Running command with coloring (Expected 0, got 0)
+[01;31m[K�[m[K�[01;31m[K�[m[K�
+:: [ 20:47:23 ] :: [   FAIL   ] :: File 'output' should contain 'č.*ř' 
+:: [ 20:47:24 ] :: [  BEGIN   ] :: Running command witout coloring :: actually running 'echo čř | grep -P '\p{L}' --color=never > output'
+:: [ 20:47:24 ] :: [   PASS   ] :: Running command witout coloring (Expected 0, got 0)
+čř
+:: [ 20:47:24 ] :: [   PASS   ] :: File 'output' should contain 'čř' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 1 bad
+::   RESULT: FAIL (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.ThOOjMLvsX into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:24 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1050916-malformed-output-when-coloring-is-on
+:: [ 20:47:24 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:24 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.0WaoC7G7Mu'
+:: [ 20:47:24 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.VxonKfHTwH into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 2
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz1050916-malformed-output-when-coloring-is-on
+    Test started  : 2026-11-24 20:47:22 UTC
+    Test finished : 2026-11-24 20:47:24 UTC (still running)
+    Test duration : 2 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:23 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:23 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:23 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:23 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:23 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.0WaoC7G7Mu' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:23 ] :: [   PASS   ] :: Running command with coloring (Expected 0, got 0)
+:: [ 20:47:23 ] :: [   FAIL   ] :: File 'output' should contain 'č.*ř' 
+:: [ 20:47:24 ] :: [   PASS   ] :: Running command witout coloring (Expected 0, got 0)
+:: [ 20:47:24 ] :: [   PASS   ] :: File 'output' should contain 'čř' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 1 bad
+::   RESULT: FAIL (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:24 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:24 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz1050916-malformed-output-when-coloring-is-on
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:24 ] :: [   LOG    ] :: Phases fingerprint:  tIGqJLIX
+:: [ 20:47:24 ] :: [   LOG    ] :: Asserts fingerprint: zPHeuCVx
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Phases: 2 good, 1 bad
+::   OVERALL RESULT: FAIL (/Regression/bz1050916-malformed-output-when-coloring-is-on)
+

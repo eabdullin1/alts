@@ -8,6 +8,7 @@ from typing import List, Optional
 from cachetools import TTLCache
 
 import requests
+from pydantic import ValidationError
 
 from alts.scheduler import CONFIG
 from alts.scheduler.db import Session, Task
@@ -134,7 +135,15 @@ class TestsScheduler(threading.Thread):
             return
         runner_type = payload.runner_type
         if runner_type == 'any':
-            runner_type = random.choice(list(runner_mapping.keys()))
+            if (
+                payload.package_tests
+                and payload.package_tests.tmt
+                and 'docker' in runner_mapping
+            ):
+                # tmt tests run only in a docker init container (ALTS-11)
+                runner_type = 'docker'
+            else:
+                runner_type = random.choice(list(runner_mapping.keys()))
         runner_class = RUNNER_MAPPING[runner_type]
 
         if payload.dist_arch not in CONFIG.supported_architectures:
@@ -205,7 +214,14 @@ class TestsScheduler(threading.Thread):
                 or not self.__terminated_event.is_set()
         ):
             for test_task_payload in self.get_available_test_tasks():
-                self.schedule_test_task(
-                    TaskRequestPayload(**test_task_payload)
-                )
+                try:
+                    payload = TaskRequestPayload(**test_task_payload)
+                except ValidationError:
+                    # One bad payload must not stop the scheduler thread
+                    self.logger.exception(
+                        'Invalid test task payload: %s',
+                        test_task_payload,
+                    )
+                    continue
+                self.schedule_test_task(payload)
             time.sleep(10)

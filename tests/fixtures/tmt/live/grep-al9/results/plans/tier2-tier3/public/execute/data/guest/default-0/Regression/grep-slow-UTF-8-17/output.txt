@@ -1,0 +1,204 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:52 ] :: [  ERROR   ] :: Could not find ./Makefile or the file is empty
+:: [ 20:47:52 ] :: [   PASS   ] :: Assert required packages installed 
+:: [ 20:47:52 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:52 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.6jHo72xIId'
+/tmp/tmp.6jHo72xIId /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/grep-slow-UTF-8
+:: [ 20:47:52 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.6jHo72xIId' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.6pnwg2oCQj into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   create BIG file, run grep tests on it
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 0	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 0	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 4.8M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 4.8M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 4.8M	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 4.8M	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 13M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 13M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 29M	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 29M	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 29M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 29M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [  BEGIN   ] :: current file size: 61M	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 61M	input0) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [  BEGIN   ] :: current file size: 125M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 125M	input) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [  BEGIN   ] :: current file size: 125M	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 125M	input0) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [  BEGIN   ] :: current file size: 253M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 253M	input) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [  BEGIN   ] :: current file size: 509M	input0) :: actually running 'cat input >> input0'
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 509M	input0) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [  BEGIN   ] :: current file size: 509M	input) :: actually running 'cat input0 >> input'
+:: [ 20:47:54 ] :: [   PASS   ] :: current file size: 509M	input) (Expected 0, got 0)
+:: [ 20:47:55 ] :: [   INFO   ] :: Final file size 2.0G	input
+:: [ 20:47:55 ] :: [  BEGIN   ] :: Running '{ time -p LC_ALL=C           grep fo.gle input; } 2>&1 | tee C.time'
+real 2.31
+user 1.82
+sys 0.31
+:: [ 20:47:57 ] :: [   PASS   ] :: Command '{ time -p LC_ALL=C           grep fo.gle input; } 2>&1 | tee C.time' (Expected 0,1, got 1)
+:: [ 20:47:57 ] :: [  BEGIN   ] :: Running '{ time -p LC_ALL=en_US.UTF-8 grep fo.gle input; } 2>&1 | tee UTF8.time'
+real 1.94
+user 1.77
+sys 0.14
+:: [ 20:47:59 ] :: [   PASS   ] :: Command '{ time -p LC_ALL=en_US.UTF-8 grep fo.gle input; } 2>&1 | tee UTF8.time' (Expected 0,1, got 1)
+:: [ 20:47:59 ] :: [   INFO   ] :: C.time:    real 2.31
+user 1.82
+sys 0.31
+:: [ 20:47:59 ] :: [   INFO   ] :: UTF8.time: real 1.94
+user 1.77
+sys 0.14
+:: [ 20:47:59 ] :: [  BEGIN   ] :: Running 'grep user C.time | cut -d' ' -f2'
+1.82
+:: [ 20:47:59 ] :: [   PASS   ] :: Command 'grep user C.time | cut -d' ' -f2' (Expected 0, got 0)
+:: [ 20:47:59 ] :: [  BEGIN   ] :: $C_TIME shoudln't be empty :: actually running 'test -n "1.82"'
+:: [ 20:47:59 ] :: [   PASS   ] :: $C_TIME shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [  BEGIN   ] :: $UTF8_TIME shoudln't be empty :: actually running 'test -n "1.77"'
+:: [ 20:47:59 ] :: [   PASS   ] :: $UTF8_TIME shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [  BEGIN   ] :: $SOWDOWN shoudln't be empty :: actually running 'test -n "0"'
+:: [ 20:47:59 ] :: [   PASS   ] :: $SOWDOWN shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [   LOG    ] :: C_TIME: 1.82
+:: [ 20:47:59 ] :: [   LOG    ] :: UTF8_TIME: 1.77
+:: [ 20:47:59 ] :: [   INFO   ] :: UTF-8 processing was roughly '0' times slower than C
+:: [ 20:47:59 ] :: [   PASS   ] :: Acceptable performance ;) 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 7s
+::   Assertions: 19 good, 0 bad
+::   RESULT: PASS (create BIG file, run grep tests on it)
+
+tmt-report-result: saving /create-BIG-file-run-grep-tests-on-it output /tmp/tmp.z6tHLavrfq into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/create-BIG-file-run-grep-tests-on-it/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:00 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/grep-slow-UTF-8
+:: [ 20:48:00 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:00 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.6jHo72xIId'
+:: [ 20:48:00 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.0SV5m4iuxQ into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 17
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/grep-slow-UTF-8
+    Test started  : 2026-11-24 20:47:50 UTC
+    Test finished : 2026-11-24 20:48:00 UTC (still running)
+    Test duration : 10 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:52 ] :: [  ERROR   ] :: Could not find ./Makefile or the file is empty
+:: [ 20:47:52 ] :: [   PASS   ] :: Assert required packages installed 
+:: [ 20:47:52 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.6jHo72xIId' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   create BIG file, run grep tests on it
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 0	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 4.8M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 4.8M	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 13M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 29M	input0) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 29M	input) (Expected 0, got 0)
+:: [ 20:47:52 ] :: [   PASS   ] :: current file size: 61M	input0) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 125M	input) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 125M	input0) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 253M	input) (Expected 0, got 0)
+:: [ 20:47:53 ] :: [   PASS   ] :: current file size: 509M	input0) (Expected 0, got 0)
+:: [ 20:47:54 ] :: [   PASS   ] :: current file size: 509M	input) (Expected 0, got 0)
+:: [ 20:47:55 ] :: [   INFO   ] :: Final file size 2.0G	input
+:: [ 20:47:57 ] :: [   PASS   ] :: Command '{ time -p LC_ALL=C           grep fo.gle input; } 2>&1 | tee C.time' (Expected 0,1, got 1)
+:: [ 20:47:59 ] :: [   PASS   ] :: Command '{ time -p LC_ALL=en_US.UTF-8 grep fo.gle input; } 2>&1 | tee UTF8.time' (Expected 0,1, got 1)
+:: [ 20:47:59 ] :: [   INFO   ] :: C.time:    real 2.31
+user 1.82
+sys 0.31
+:: [ 20:47:59 ] :: [   INFO   ] :: UTF8.time: real 1.94
+user 1.77
+sys 0.14
+:: [ 20:47:59 ] :: [   PASS   ] :: Command 'grep user C.time | cut -d' ' -f2' (Expected 0, got 0)
+:: [ 20:47:59 ] :: [   PASS   ] :: $C_TIME shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [   PASS   ] :: $UTF8_TIME shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [   PASS   ] :: $SOWDOWN shoudln't be empty (Expected 0, got 0)
+:: [ 20:47:59 ] :: [   LOG    ] :: C_TIME: 1.82
+:: [ 20:47:59 ] :: [   LOG    ] :: UTF8_TIME: 1.77
+:: [ 20:47:59 ] :: [   INFO   ] :: UTF-8 processing was roughly '0' times slower than C
+:: [ 20:47:59 ] :: [   PASS   ] :: Acceptable performance ;) 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 7s
+::   Assertions: 19 good, 0 bad
+::   RESULT: PASS (create BIG file, run grep tests on it)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:00 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:00 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/grep-slow-UTF-8
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:00 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:48:00 ] :: [   LOG    ] :: Asserts fingerprint: hbBXme7J
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-slow-UTF-8-17'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 10s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/grep-slow-UTF-8)
+

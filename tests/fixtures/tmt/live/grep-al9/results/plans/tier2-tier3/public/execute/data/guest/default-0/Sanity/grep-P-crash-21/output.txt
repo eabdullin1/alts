@@ -1,0 +1,127 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:48:06 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:06 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:06 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:06 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:48:06 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:06 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.eOGAQeF4nf'
+/tmp/tmp.eOGAQeF4nf /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Sanity/grep-P-crash
+:: [ 20:48:06 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.eOGAQeF4nf' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.EgCL58uqxW into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:: [ 20:48:06 ] :: [   PASS   ] :: Successful execution: PASS 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.NrViZN4RxA into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:06 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Sanity/grep-P-crash
+:: [ 20:48:06 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:06 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.eOGAQeF4nf'
+:: [ 20:48:06 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.sD70CnOQsI into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 21
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Sanity/grep-P-crash
+    Test started  : 2026-11-24 20:48:05 UTC
+    Test finished : 2026-11-24 20:48:06 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:06 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:06 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:06 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:06 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:06 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.eOGAQeF4nf' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:06 ] :: [   PASS   ] :: Successful execution: PASS 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:06 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:06 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Sanity/grep-P-crash
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:06 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:48:06 ] :: [   LOG    ] :: Asserts fingerprint: wG6Jb0bU
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-P-crash-21'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Sanity/grep-P-crash)
+

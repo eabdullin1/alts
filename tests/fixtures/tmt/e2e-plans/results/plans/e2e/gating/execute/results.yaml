@@ -1,0 +1,68 @@
+# execute/results.yaml of the plan, as tmt 1.78 writes it
+- name: /e2e/pass
+  serial-number: 1
+  fmf-id:
+    name: /e2e/pass
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/e2e/pass-1/output.txt
+  - data/guest/default-0/e2e/pass-1/journal.txt
+  start-time: '2026-11-24T17:20:00+00:00'
+  end-time: '2026-11-24T17:20:01+00:00'
+  duration: 00:00:01
+  data-path: data/guest/default-0/e2e/pass-1/data
+  check: []
+  subresult: []
+- name: /e2e/fail
+  serial-number: 2
+  fmf-id:
+    name: /e2e/fail
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: fail
+  note:
+  - fail in the test phase
+  log:
+  - data/guest/default-0/e2e/fail-2/output.txt
+  - data/guest/default-0/e2e/fail-2/journal.txt
+  start-time: '2026-11-24T17:20:01+00:00'
+  end-time: '2026-11-24T17:20:02+00:00'
+  duration: 00:00:01
+  data-path: data/guest/default-0/e2e/fail-2/data
+  check: []
+  subresult: []
+- name: /e2e/skipme
+  serial-number: 3
+  fmf-id:
+    name: /e2e/skipme
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: fail
+  note: []
+  log:
+  - data/guest/default-0/e2e/skipme-3/output.txt
+  - data/guest/default-0/e2e/skipme-3/journal.txt
+  start-time: '2026-11-24T17:20:02+00:00'
+  end-time: '2026-11-24T17:20:03+00:00'
+  duration: 00:00:01
+  data-path: data/guest/default-0/e2e/skipme-3/data
+  check: []
+  subresult: []

@@ -83,6 +83,60 @@ Example of a file content:
 
 A task can also skip tests on its own with the `skipped_tests` field of its payload. The build system fills it from the package tests config in https://git.almalinux.org/tests/<package>. It takes the names the results use: `install_package`, `package_integrity_tests`, `third_party_tests` and `uninstall_package`, or `third_party_test_<test file>` for a single third-party test, where the file name may be a shell-style pattern (`third_party_test_*.bats`). Skipped tests are listed in `skipped_tests` of the task result.
 
+Docker environments
+--
+
+Every docker task, a package test task or a tmt task, runs in a container of an init image with systemd as PID 1 (`/sbin/init`, the `CMD` of the image), started with `--cgroupns=private --security-opt writable-cgroups=true --tmpfs /run --tmpfs /run/lock`, without `--privileged`. The worker needs cgroup v2 and Docker 28.0.0 or newer, otherwise the environment doesn't start and the `start_environment` stage says why. The initial provision waits for systemd to reach `running` or `degraded`.
+
+x86_64, x86_64_v2 and i686 tasks share the multi-platform tags of the init images (`almalinux/9-init:9` serves `linux/amd64` and `linux/386`): the container is created for the platform of the task, and before it the runner pulls the image for that platform (`docker pull --platform`) unless the worker has it (`docker image inspect --platform`, Docker 28.1 or newer; with older Docker the image is pulled for every task).
+
+The images come only from `docker_images` of the worker config: full names with tags of init images by `<dist_name>-<dist_version>` of the task. An entry `<dist_name>-<dist_version>-<dist_arch>` takes precedence for one architecture, and the major version is tried after the full one (`almalinux-9` serves 9.6). A task of a platform missing there fails at `prepare_work_dir` with the keys it has looked for. There are no defaults in the code:
+
+```yaml
+docker_images:
+  almalinux-8: "almalinux/8-init:8"
+  almalinux-9: "almalinux/9-init:9"
+  almalinux-10: "almalinux/10-init:10"
+  almalinux-10-kitten: "almalinux/10-kitten-init:10-kitten"
+```
+
+tmt tests
+--
+
+A task with `package_tests.tmt` in its payload is a component test task: instead of installing a single package and running its tests, it runs the tmt plans of the component's https://git.almalinux.org/tests/<package> repository, stage `tmt_tests`.
+
+- The environment is a docker container of an init image, like for any docker task (see Docker environments above). tmt tasks always go to the docker runner.
+- The initial provision installs tmt, beakerlib and the tools tests expect from CI machines, enables CRB, starts sshd and puts a comment line into `/etc/fstab` when it is missing or empty.
+- The stage checks out exactly `package_tests.commit` of `package_tests.url`, installs `package_tests.packages` and puts their RPMs into `/var/share/test-artifacts`, then runs `tmt --feeling-safe -c distro=... -c arch=... -c initiator=albs run -e HOME=/root -e PATH=... --all provision --how local plans --name ...` in `/var/tmp/tmt/run` (without `--feeling-safe` where tmt doesn't know it, tmt 1.26 on AlmaLinux 8). `distro` is `almalinux-<version>,centos-stream-<major>,rhel-<version>`, for Kitten `almalinux-kitten-10,centos-stream-10`. Plans named `.../internal` or using internal Red Hat repositories are not run.
+- `tmt_test_<test name>` in `skipped_tests` (a shell-style pattern, e.g. `tmt_test_/Regression/RHEL-9973-*`) leaves the test out of the tmt run itself, and `tmt_tests` skips the stage. In a plan with several discover phases tmt names a test `/<phase>/<name>` in the results, e.g. `/cups-public/Sanity/basic-commands`: a rule may give either `tmt_test_/cups-public/Sanity/basic-commands` or `tmt_test_/Sanity/basic-commands`, the second one leaves the test out of every phase.
+- A failed tmt test doesn't fail the stage: the stage fails only when it can't run the plans, e.g. when the discover step of a plan fails (a repository of a discover phase can't be cloned, ...). tmt leaves `discover/step.yaml` of such a plan in the `todo` status and an empty `results.yaml`; the plan gets `"error": "discover failed: <tmt error>"` in `tmt_tests.plans`, the stage log has the tmt errors of the step and `tmt_tests.success` is false. tmt exits with 2 then, as for a test with the `error` outcome, so the exit code doesn't tell the two apart, and doesn't run the plans after it (they get `"error": "no results"`). The results of the tests are in the `tmt` section of the result, `tmt_test_<test name>`, or `tmt_test_<test name>@<plan>` for a test of several selected plans:
+
+```ruby
+"tmt_tests": {
+  "success": true, # tmt has run all the plans
+  "url": "https://git.almalinux.org/tests/chrony.git",
+  "commit": "4f1c2e9...",
+  "installed_packages": ["chrony-4.6-1.el9.x86_64"],
+  "context": {"distro": "almalinux-9.7,centos-stream-9,rhel-9.7", "arch": "x86_64", "initiator": "albs", "component": "chrony"},
+  "excluded_plans": [{"name": "/plans/tier1/internal", "reason": "internal plan"}],
+  "tmt_exit_code": 1,
+  "plans": [{"name": "/plans/tier1/public", "counts": {"pass": 7, "fail": 1}}], # or "error": "no results"
+  "counts": {"pass": 7, "fail": 1}
+},
+"tmt": {
+  "tmt_test_/Sanity/basic": {
+    "success": true, # pass, info and warn are a success; fail, error and pending are not
+    "result": "pass", # the tmt outcome
+    "name": "/Sanity/basic",
+    "plan": "/plans/tier1/public",
+    "duration": "00:00:12",
+    "note": "",
+    "output": "Result: pass\nPlan: ..." # a short summary, the whole output is in the logs
+  }
+},
+"skipped_tests": ["tmt_test_/Sanity/reboot"] # skipped by the task and by tmt itself
+```
+
 Filling options in the config file
 --
 
@@ -205,6 +259,17 @@ After acquiring the token, you can put it in Authorize section on the http://loc
   "package_name": "string" # the name of the package to install
   "package_version": "string" # optional, version of the package you want to install
   "skipped_tests": [] # optional, tests not to run, e.g. ["uninstall_package", "third_party_test_*.bats"]
+  "package_tests": { # optional, tmt tests of the component (see "tmt tests")
+    "url": "https://git.almalinux.org/tests/chrony.git", # tests/<package> repository
+    "commit": "4f1c2e9...", # full hash of the commit to test
+    "packages": ["chrony-4.6-1.el9.x86_64"], # optional, build packages to install, dnf specs
+    "tmt": {
+      "plans": ["/plans/tier1/public"], # plans for the platform and the architecture of the task
+      "filter": "tier: 1", # optional, like "tmt run tests --filter"
+      "context": {"component": "chrony"}, # optional, added to distro, arch and initiator
+      "environment": {"TEST_PROFILE": "container"} # optional, environment of the tests
+    }
+  }
 }
 ```
   

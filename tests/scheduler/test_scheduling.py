@@ -98,3 +98,98 @@ class TestGetQueueArch:
                 arch='x86_64',
                 queue_arch='x86-64-v3',
             )
+
+
+class FakeSession:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return False
+
+    def begin(self):
+        return self
+
+    def add(self, record):
+        pass
+
+    def commit(self):
+        pass
+
+
+def make_scheduler() -> scheduling.TestsScheduler:
+    import threading
+
+    return scheduling.TestsScheduler(
+        threading.Event(),
+        threading.Event(),
+        celery_app=None,
+    )
+
+
+def test_tmt_task_goes_to_docker(monkeypatch: pytest.MonkeyPatch):
+    queues = []
+    monkeypatch.setattr(CONFIG, 'supported_runners', 'all')
+    monkeypatch.setattr(CONFIG, 'queue_arch_overrides', [])
+    monkeypatch.setattr(scheduling, 'Session', FakeSession)
+    monkeypatch.setattr(
+        scheduling.run_tests,
+        'apply_async',
+        lambda *args, **kwargs: queues.append(kwargs['queue']),
+    )
+    # Without tmt the runner is random, with tmt it's always docker
+    monkeypatch.setattr(
+        scheduling.random,
+        'choice',
+        lambda choices: 'opennebula',
+    )
+    scheduler = make_scheduler()
+    payload = TaskRequestPayload(
+        bs_task_id=1,
+        runner_type='any',
+        dist_name='almalinux',
+        dist_version='9',
+        dist_arch='x86_64',
+        package_name='chrony',
+        package_tests={
+            'url': 'https://git.almalinux.org/tests/chrony.git',
+            'commit': 'a' * 40,
+            'tmt': {'plans': ['/plans/tier1/public']},
+        },
+    )
+    scheduler.schedule_test_task(payload)
+    assert queues == ['docker-x86_64-0']
+
+
+def test_invalid_payload_does_not_stop_scheduler(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    scheduler = make_scheduler()
+    good = {
+        'bs_task_id': 2,
+        'runner_type': 'docker',
+        'dist_name': 'almalinux',
+        'dist_version': '9',
+        'dist_arch': 'x86_64',
+        'package_name': 'chrony',
+    }
+    bad = dict(good, bs_task_id=1, package_tests={'url': 'x', 'commit': 'main'})
+    scheduled = []
+    monkeypatch.setattr(
+        scheduler,
+        'get_available_test_tasks',
+        lambda: [bad, good],
+    )
+    monkeypatch.setattr(
+        scheduler,
+        'schedule_test_task',
+        lambda payload: scheduled.append(payload.bs_task_id),
+    )
+
+    def stop(_):
+        scheduler._TestsScheduler__graceful_terminate.set()
+        scheduler._TestsScheduler__terminated_event.set()
+
+    monkeypatch.setattr(scheduling.time, 'sleep', stop)
+    scheduler.run()
+    assert scheduled == [2]

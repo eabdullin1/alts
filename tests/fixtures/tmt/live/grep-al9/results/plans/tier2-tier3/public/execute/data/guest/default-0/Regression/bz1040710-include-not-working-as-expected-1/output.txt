@@ -1,0 +1,167 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:22 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:22 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:22 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:22 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.7D37JYQfrg'
+/tmp/tmp.7D37JYQfrg /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1040710-include-not-working-as-expected
+:: [ 20:47:22 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.7D37JYQfrg' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.jrzWlthV3z into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Create test files :: actually running 'echo foo >1 ; echo foo > 2 ; echo foo > subdir/10; echo foo > subdir/20'
+:: [ 20:47:22 ] :: [   PASS   ] :: Create test files (Expected 0, got 0)
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Run # grep --exclude 1 -r -H foo * :: actually running 'grep --exclude 1 -r -H foo * >output'
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep --exclude 1 -r -H foo * (Expected 0, got 0)
+2:foo
+subdir/10:foo
+subdir/20:foo
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '2:foo' 
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Run # grep --include 1 -r -H foo * :: actually running 'grep --include 1 -r -H foo * >output'
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep --include 1 -r -H foo * (Expected 0, got 0)
+1:foo
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '1:foo' 
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Run # grep -r --include 1 -H foo * :: actually running 'grep -r --include 1 -H foo * >output'
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 1 -H foo * (Expected 0, got 0)
+1:foo
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '1:foo' 
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Run # grep -r --include 10 -H foo * :: actually running 'grep -r --include 10 -H foo * >output'
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 10 -H foo * (Expected 0, got 0)
+subdir/10:foo
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '1:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain 'subdir/10:foo' 
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Run # grep -r --include 10 -H foo . :: actually running 'grep -r --include 10 -H foo . >output'
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 10 -H foo . (Expected 0, got 0)
+./subdir/10:foo
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain './subdir/10:foo' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 15 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.jU72mseX2y into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1040710-include-not-working-as-expected
+:: [ 20:47:22 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:22 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.7D37JYQfrg'
+:: [ 20:47:22 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.9Se7W0jWKY into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 1
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz1040710-include-not-working-as-expected
+    Test started  : 2026-11-24 20:47:21 UTC
+    Test finished : 2026-11-24 20:47:22 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:22 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:22 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:22 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.7D37JYQfrg' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [   PASS   ] :: Create test files (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep --exclude 1 -r -H foo * (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep --include 1 -r -H foo * (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '1:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 1 -H foo * (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain '1:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 10 -H foo * (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '1:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should not contain '2:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain 'subdir/10:foo' 
+:: [ 20:47:22 ] :: [   PASS   ] :: Run # grep -r --include 10 -H foo . (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: File 'output' should contain './subdir/10:foo' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 15 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:22 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz1040710-include-not-working-as-expected
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:22 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:22 ] :: [   LOG    ] :: Asserts fingerprint: FfeJcO6E
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz1040710-include-not-working-as-expected)
+

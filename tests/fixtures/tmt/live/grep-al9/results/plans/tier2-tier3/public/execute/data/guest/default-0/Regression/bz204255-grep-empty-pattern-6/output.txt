@@ -1,0 +1,132 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:30 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:30 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:30 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:30 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.Y5kRkxDH47'
+/tmp/tmp.Y5kRkxDH47 /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz204255-grep-empty-pattern
+:: [ 20:47:30 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.Y5kRkxDH47' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.gX259rvxNZ into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Running reproducer 1/2 :: actually running 'echo test | grep -e 'Test' -e '' &>test.log'
+:: [ 20:47:30 ] :: [   PASS   ] :: Running reproducer 1/2 (Expected 0, got 0)
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Running reproducer 2/2 :: actually running 'echo test | grep -e '' -e 'Test' &>>test.log'
+:: [ 20:47:30 ] :: [   PASS   ] :: Running reproducer 2/2 (Expected 0, got 0)
+:: [ 20:47:30 ] :: [   PASS   ] :: Checking number of lines (expect 2) (Assert: '2' should equal '2')
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.T4S4iIscaj into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz204255-grep-empty-pattern
+:: [ 20:47:30 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:30 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.Y5kRkxDH47'
+:: [ 20:47:30 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.VZu2wVSxTB into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 6
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz204255-grep-empty-pattern
+    Test started  : 2026-11-24 20:47:29 UTC
+    Test finished : 2026-11-24 20:47:30 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:30 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:30 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:30 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:30 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.Y5kRkxDH47' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [   PASS   ] :: Running reproducer 1/2 (Expected 0, got 0)
+:: [ 20:47:30 ] :: [   PASS   ] :: Running reproducer 2/2 (Expected 0, got 0)
+:: [ 20:47:30 ] :: [   PASS   ] :: Checking number of lines (expect 2) (Assert: '2' should equal '2')
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:30 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz204255-grep-empty-pattern
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:30 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:30 ] :: [   LOG    ] :: Asserts fingerprint: jJDG+ZKM
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz204255-grep-empty-pattern-6'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz204255-grep-empty-pattern)
+

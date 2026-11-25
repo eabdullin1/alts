@@ -1,0 +1,92 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:29 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:29 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:29 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.94H5MImd1x into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:29 ] :: [  BEGIN   ] :: Running 'rpm -q --fileprovide grep | grep '/usr/bin/grep''
+/usr/bin/grep	
+:: [ 20:47:29 ] :: [   PASS   ] :: Command 'rpm -q --fileprovide grep | grep '/usr/bin/grep'' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.SrYkKCNsro into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 5
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+    Test started  : 2026-11-24 20:47:28 UTC
+    Test finished : 2026-11-24 20:47:29 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:29 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:29 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:29 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:29 ] :: [   PASS   ] :: Command 'rpm -q --fileprovide grep | grep '/usr/bin/grep'' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:29 ] :: [   LOG    ] :: Phases fingerprint:  +4gEhNYZ
+:: [ 20:47:29 ] :: [   LOG    ] :: Asserts fingerprint: +4gEhNYZ
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 2 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz1567086-grep-does-not-provide-usr-bin-grep)
+

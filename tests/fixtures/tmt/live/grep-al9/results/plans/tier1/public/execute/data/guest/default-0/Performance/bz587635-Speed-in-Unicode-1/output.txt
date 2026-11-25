@@ -1,0 +1,159 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:01 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:01 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:01 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:01 ] :: [   PASS   ] :: File /usr/share/dict/linux.words should exist 
+:: [ 20:47:01 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TPMDIR=`mktemp -d`'
+:: [ 20:47:01 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:01 ] :: [  BEGIN   ] :: Entering tmp directory :: actually running 'pushd /tmp/tmp.39KGpeA6Xr'
+/tmp/tmp.39KGpeA6Xr /var/tmp/tmt/run/plans/tier1/public/discover/default-0/tests/Performance/bz587635-Speed-in-Unicode
+:: [ 20:47:01 ] :: [   PASS   ] :: Entering tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.09jBNbc2WI into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:01 ] :: [  BEGIN   ] :: Setting Unicode :: actually running 'export LANG=en_US.UTF-8'
+:: [ 20:47:01 ] :: [   PASS   ] :: Setting Unicode (Expected 0, got 0)
+:: [ 20:47:01 ] :: [   PASS   ] :: Double checking that Unicode is used (Assert: 'en_US.UTF-8' should equal 'en_US.UTF-8')
+:: [ 20:47:01 ] :: [   LOG    ] :: Runnning egrep -x .... /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:02 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[2]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:03 ] :: [   PASS   ] :: Searching for .... was quick enough 
+:: [ 20:47:03 ] :: [   LOG    ] :: Runnning egrep -x [a-z]* /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:04 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[3]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:05 ] :: [   PASS   ] :: Searching for [a-z]* was quick enough 
+:: [ 20:47:05 ] :: [   LOG    ] :: Runnning egrep -x [^[:digit:]]* /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:06 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[4]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:07 ] :: [   PASS   ] :: Searching for [^[:digit:]]* was quick enough 
+:: [ 20:47:07 ] :: [   LOG    ] :: Runnning egrep -x [[:alpha:]]{10} /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:08 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[5]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:09 ] :: [   PASS   ] :: Searching for [[:alpha:]]{10} was quick enough 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 8s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.BcWWEFuBsv into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:09 ] :: [  BEGIN   ] :: Leaving tmp directory :: actually running 'popd'
+/var/tmp/tmt/run/plans/tier1/public/discover/default-0/tests/Performance/bz587635-Speed-in-Unicode
+:: [ 20:47:09 ] :: [   PASS   ] :: Leaving tmp directory (Expected 0, got 0)
+:: [ 20:47:09 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.39KGpeA6Xr'
+:: [ 20:47:09 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.nv78QzC6yH into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 1
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Performance/bz587635-Speed-in-Unicode
+    Test started  : 2026-11-24 20:47:00 UTC
+    Test finished : 2026-11-24 20:47:09 UTC (still running)
+    Test duration : 9 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:01 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:01 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:01 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:01 ] :: [   PASS   ] :: File /usr/share/dict/linux.words should exist 
+:: [ 20:47:01 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:01 ] :: [   PASS   ] :: Entering tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:01 ] :: [   PASS   ] :: Setting Unicode (Expected 0, got 0)
+:: [ 20:47:01 ] :: [   PASS   ] :: Double checking that Unicode is used (Assert: 'en_US.UTF-8' should equal 'en_US.UTF-8')
+:: [ 20:47:01 ] :: [   LOG    ] :: Runnning egrep -x .... /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:02 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:03 ] :: [   PASS   ] :: Searching for .... was quick enough 
+:: [ 20:47:03 ] :: [   LOG    ] :: Runnning egrep -x [a-z]* /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:04 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:05 ] :: [   PASS   ] :: Searching for [a-z]* was quick enough 
+:: [ 20:47:05 ] :: [   LOG    ] :: Runnning egrep -x [^[:digit:]]* /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:06 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:07 ] :: [   PASS   ] :: Searching for [^[:digit:]]* was quick enough 
+:: [ 20:47:07 ] :: [   LOG    ] :: Runnning egrep -x [[:alpha:]]{10} /usr/share/dict/linux.words > /dev/null, with 15 seconds timeout
+:: [ 20:47:08 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:09 ] :: [   PASS   ] :: Searching for [[:alpha:]]{10} was quick enough 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 8s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:09 ] :: [   PASS   ] :: Leaving tmp directory (Expected 0, got 0)
+:: [ 20:47:09 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Performance/bz587635-Speed-in-Unicode
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:09 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:09 ] :: [   LOG    ] :: Asserts fingerprint: uL6mVwNk
+File '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 9s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Performance/bz587635-Speed-in-Unicode)
+

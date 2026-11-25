@@ -1,0 +1,22 @@
+# tests/cups with two discover phases in /plans/tier2-tier3/public
+# (live check of 2026-11-26, see tests/fixtures/tmt/README.md)
+commit: e5cc26c5fb2680b1ceac08b9d397815c01084654
+plans:
+  - /plans/tier2-tier3/public
+  - /plans/tier2-tier3/internal
+# tmt names the tests /<phase>/<name> in discover and in the results,
+# "tmt run tests --name" sees /<name>
+phases:
+  /plans/tier2-tier3/public: [cups-public, cups-extra]
+plans_export:
+  - name: /plans/tier2-tier3/public
+    discover:
+      - {name: cups-public, how: fmf, filter: 'tier: 3 & tag: -multihost'}
+      - {name: cups-extra, how: fmf,
+         test: [/Regression/bz1659111-correct-permissions-on-logs]}
+  - name: /plans/tier2-tier3/internal
+    discover:
+      - {name: cups-internal, how: fmf,
+         url: 'https://pkgs.devel.redhat.com/git/tests/cups'}
+# The test calls reboot: if it runs, the container stops and tmt dies
+reboot: /cups-public/Sanity/cups-systemd-units-smoke

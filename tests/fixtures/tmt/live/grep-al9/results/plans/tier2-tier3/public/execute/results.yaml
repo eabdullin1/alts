@@ -1,0 +1,1907 @@
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:22.809709+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:22.809654+00:00'
+  context:
+    arch: &id001
+    - x86_64
+    component: &id002
+    - grep
+    distro: &id003
+    - almalinux-9.9
+    - centos-stream-9
+    - rhel-9.9
+    initiator: &id004
+    - albs
+  data-path: data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:22.808949+00:00'
+  fmf-id:
+    name: /Regression/bz1040710-include-not-working-as-expected
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0354770
+    extra-task: /CoreOS/grep/Regression/bz1040710-include-not-working-as-expected
+    id: 830ce520-40f8-4b77-b76c-c9c4be017a42
+  log:
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/output.txt
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/journal.txt
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/failures.yaml
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/journal.xml
+  name: /Regression/bz1040710-include-not-working-as-expected
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 1
+  start-time: '2026-11-24T20:47:21.288213+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:22.281571+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:22.520236+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:22.626341+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz1040710-include-not-working-as-expected/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:24.371857+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:24.371804+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:24.371114+00:00'
+  fmf-id:
+    name: /Regression/bz1050916-malformed-output-when-coloring-is-on
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0337952
+    extra-task: /CoreOS/grep/Regression/bz1050916-malformed-output-when-coloring-is-on
+    id: edd0b0e6-f457-4b1d-bed8-781c0846f997
+  log:
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/output.txt
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/journal.txt
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/failures.yaml
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/journal.xml
+  name: /Regression/bz1050916-malformed-output-when-coloring-is-on
+  note: []
+  original-result: fail
+  result: fail
+  serial-number: 2
+  start-time: '2026-11-24T20:47:22.850510+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:23.926494+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:24.051508+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: fail
+    result: fail
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:24.156592+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz1050916-malformed-output-when-coloring-is-on/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:26.293500+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:26.293441+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:26.292730+00:00'
+  fmf-id:
+    name: /Regression/bz1256756-grep-r-has-been-broken
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0534495
+    extra-task: /CoreOS/grep/Regression/bz1256756-grep-r-has-been-broken
+    id: fcb18e6c-9198-4873-8650-8199ce348549
+  log:
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/output.txt
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/journal.txt
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/failures.yaml
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/journal.xml
+  name: /Regression/bz1256756-grep-r-has-been-broken
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 3
+  start-time: '2026-11-24T20:47:24.414701+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:25.567767+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:25.808429+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Testing-GREP-LEGACY-R-0/output.txt
+    name: /Testing-GREP-LEGACY-R-0
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:25.945526+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz1256756-grep-r-has-been-broken/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:28.135857+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:28.135801+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:28.135077+00:00'
+  fmf-id:
+    name: /Regression/bz1287074-start-end-E-issue
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0539997
+    extra-task: /CoreOS/grep/Regression/bz1287074-start-end-E-issue
+    id: 82a5fe11-778f-44de-b3ed-35275dd4aadc
+  log:
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/output.txt
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/journal.txt
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/failures.yaml
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/journal.xml
+  name: /Regression/bz1287074-start-end-E-issue
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 4
+  start-time: '2026-11-24T20:47:26.360610+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:27.709294+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:27.807529+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:27.932050+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz1287074-start-end-E-issue/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:29.553390+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:29.553316+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:29.552600+00:00'
+  fmf-id:
+    name: /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0590335
+    extra-task: /CoreOS/grep/Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+    id: 2d30fa6d-59e1-4bcd-ae52-6fb4c56b5485
+  log:
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/output.txt
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/journal.txt
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/failures.yaml
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/journal.xml
+  name: /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 5
+  start-time: '2026-11-24T20:47:28.180892+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:29.260131+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:29.370794+00:00'
+    log:
+    - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz1567086-grep-does-not-provide-usr-bin-grep/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:31.120638+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:31.120588+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:31.119914+00:00'
+  fmf-id:
+    name: /Regression/bz204255-grep-empty-pattern
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0139325
+    extra-task: /CoreOS/grep/Regression/bz204255-grep-empty-pattern
+    id: af6b3aa1-61e7-40c7-96cf-5a9484faf17b
+  log:
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/output.txt
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/journal.txt
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/failures.yaml
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/journal.xml
+  name: /Regression/bz204255-grep-empty-pattern
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 6
+  start-time: '2026-11-24T20:47:29.598350+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:30.669997+00:00'
+    log:
+    - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:30.792029+00:00'
+    log:
+    - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:30.896757+00:00'
+    log:
+    - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz204255-grep-empty-pattern/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:32.488438+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:32.488379+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:32.487695+00:00'
+  fmf-id:
+    name: /Regression/bz434934-segfault-with-m-and-A
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061918
+    extra-task: /CoreOS/grep/Regression/bz434934-segfault-with-m-and-A
+    id: 1d79aa1e-b665-493d-b0d1-4ebfa1f9aa69
+  log:
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/output.txt
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/journal.txt
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/failures.yaml
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/journal.xml
+  name: /Regression/bz434934-segfault-with-m-and-A
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 7
+  start-time: '2026-11-24T20:47:31.167524+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:32.181239+00:00'
+    log:
+    - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/data/Testing/output.txt
+    name: /Testing
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:32.270423+00:00'
+    log:
+    - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz434934-segfault-with-m-and-A/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:35.713583+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:35.713534+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/data
+  duration: 00:00:03
+  end-time: '2026-11-24T20:47:35.712881+00:00'
+  fmf-id:
+    name: /Regression/bz460641-korean-grep-eats-cpu
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061920
+    extra-task: /CoreOS/grep/Regression/bz460641-korean-grep-eats-cpu
+    id: 0f233be9-f754-4682-b777-32034bc35a18
+  log:
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/output.txt
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/journal.txt
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/failures.yaml
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/journal.xml
+  name: /Regression/bz460641-korean-grep-eats-cpu
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 8
+  start-time: '2026-11-24T20:47:32.534784+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:35.518736+00:00'
+    log:
+    - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/data/Testing/output.txt
+    name: /Testing
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz460641-korean-grep-eats-cpu/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:37.181090+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:37.181033+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:37.180301+00:00'
+  fmf-id:
+    name: /Regression/bz574350-grep-w-broken-in-multibyte-locales
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0139327
+    extra-task: /CoreOS/grep/Regression/bz574350-grep-w-broken-in-multibyte-locales
+    id: dfb4776e-7e07-499e-9044-9c782c9804c6
+  log:
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/output.txt
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/journal.txt
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/failures.yaml
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/journal.xml
+  name: /Regression/bz574350-grep-w-broken-in-multibyte-locales
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 9
+  start-time: '2026-11-24T20:47:35.760084+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:36.754896+00:00'
+    log:
+    - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:36.853648+00:00'
+    log:
+    - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:36.959038+00:00'
+    log:
+    - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz574350-grep-w-broken-in-multibyte-locales/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:38.701386+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:38.701325+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:38.700623+00:00'
+  fmf-id:
+    name: /Regression/bz715295-process-grep-was-killed
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0284340
+    extra-task: /CoreOS/grep/Regression/bz715295-process-grep-was-killed
+    id: 95229bf0-c406-43c1-b0de-964662a89179
+  log:
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/output.txt
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/journal.txt
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/failures.yaml
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/journal.xml
+  name: /Regression/bz715295-process-grep-was-killed
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 10
+  start-time: '2026-11-24T20:47:37.230056+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:38.256168+00:00'
+    log:
+    - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:38.381086+00:00'
+    log:
+    - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:38.488633+00:00'
+    log:
+    - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz715295-process-grep-was-killed/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:40.327785+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:40.327731+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:40.326988+00:00'
+  fmf-id:
+    name: /Regression/bz797934-segfault-for-grep-Fie
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0284342
+    extra-task: /CoreOS/grep/Regression/bz797934-segfault-for-grep-Fie
+    id: 2cb4b662-6429-4160-b42d-c23de1cf786c
+  log:
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/output.txt
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/journal.txt
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/failures.yaml
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/journal.xml
+  name: /Regression/bz797934-segfault-for-grep-Fie
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 11
+  start-time: '2026-11-24T20:47:38.755503+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:39.889911+00:00'
+    log:
+    - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:40.006363+00:00'
+    log:
+    - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:40.110999+00:00'
+    log:
+    - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz797934-segfault-for-grep-Fie/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:41.850787+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:41.850737+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:41.850060+00:00'
+  fmf-id:
+    name: /Regression/bz826997-broken-ignore-case-with-UTF8
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0284345
+    extra-task: /CoreOS/grep/Regression/bz826997-broken-ignore-case-with-UTF8
+    id: f406b8d2-58f5-4d3f-9f39-093b22cddc48
+  log:
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/output.txt
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/journal.txt
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/failures.yaml
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/journal.xml
+  name: /Regression/bz826997-broken-ignore-case-with-UTF8
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 12
+  start-time: '2026-11-24T20:47:40.379600+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:41.416241+00:00'
+    log:
+    - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:41.523743+00:00'
+    log:
+    - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:41.629082+00:00'
+    log:
+    - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/bz826997-broken-ignore-case-with-UTF8/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:43.476458+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:43.476398+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:43.475720+00:00'
+  fmf-id:
+    name: /Regression/core-dump-with-perl-regexps-on-some-binary-file
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0466969
+    extra-task: /CoreOS/grep/Regression/core-dump-with-perl-regexps-on-some-binary-file
+    id: 365c0722-b8ae-4ac3-a007-d42d5c5a31d9
+  log:
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/output.txt
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/journal.txt
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/failures.yaml
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/journal.xml
+  name: /Regression/core-dump-with-perl-regexps-on-some-binary-file
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 13
+  start-time: '2026-11-24T20:47:41.904222+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:43.015449+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:43.159247+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:43.264720+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/core-dump-with-perl-regexps-on-some-binary-file/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:45.153401+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:45.153348+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:45.152700+00:00'
+  fmf-id:
+    name: /Regression/core-dump-with-recurse-and-perl-switch
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0467386
+    extra-task: /CoreOS/grep/Regression/core-dump-with-recurse-and-perl-switch
+    id: 81f7ff46-945c-4da1-b417-9d4efbab6926
+  log:
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/output.txt
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/journal.txt
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/failures.yaml
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/journal.xml
+  name: /Regression/core-dump-with-recurse-and-perl-switch
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 14
+  start-time: '2026-11-24T20:47:43.531751+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:44.593091+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:44.829427+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:44.934289+00:00'
+    log:
+    - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/core-dump-with-recurse-and-perl-switch/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:48.591527+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:48.591446+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/grep-Fw-loop-15/data
+  duration: 00:00:03
+  end-time: '2026-11-24T20:47:48.590419+00:00'
+  fmf-id:
+    name: /Regression/grep-Fw-loop
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061940
+    extra-task: /CoreOS/grep/Regression/grep-Fw-loop
+    id: 095b7106-1452-4a27-b3c6-b12f433d0efb
+  log:
+  - data/guest/default-0/Regression/grep-Fw-loop-15/output.txt
+  - data/guest/default-0/Regression/grep-Fw-loop-15/journal.txt
+  - data/guest/default-0/Regression/grep-Fw-loop-15/failures.yaml
+  - data/guest/default-0/Regression/grep-Fw-loop-15/journal.xml
+  name: /Regression/grep-Fw-loop
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 15
+  start-time: '2026-11-24T20:47:45.209875+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:46.200515+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-Fw-loop-15/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:48.280457+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-Fw-loop-15/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:48.383682+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-Fw-loop-15/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/grep-Fw-loop/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:50.178642+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:50.178587+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/grep-mem-16/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:50.177820+00:00'
+  fmf-id:
+    name: /Regression/grep-mem
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0008049
+    extra-task: /CoreOS/grep/Regression/grep-mem
+    id: d6e8b441-8177-41f2-ba34-272ff736a8ba
+  log:
+  - data/guest/default-0/Regression/grep-mem-16/output.txt
+  - data/guest/default-0/Regression/grep-mem-16/journal.txt
+  - data/guest/default-0/Regression/grep-mem-16/failures.yaml
+  - data/guest/default-0/Regression/grep-mem-16/journal.xml
+  name: /Regression/grep-mem
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 16
+  start-time: '2026-11-24T20:47:48.656250+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:49.724546+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-mem-16/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:49.901464+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-mem-16/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:50.005741+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-mem-16/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/grep-mem/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:48:00.392510+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:48:00.392458+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/grep-slow-UTF-8-17/data
+  duration: 00:00:10
+  end-time: '2026-11-24T20:48:00.391796+00:00'
+  fmf-id:
+    name: /Regression/grep-slow-UTF-8
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061939
+    extra-task: /CoreOS/grep/Regression/grep-slow-UTF-8
+    id: cce922d5-291b-4753-8a73-be9c5e0b6e95
+  log:
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/output.txt
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/journal.txt
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/failures.yaml
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/journal.xml
+  name: /Regression/grep-slow-UTF-8
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 17
+  start-time: '2026-11-24T20:47:50.245159+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:52.123449+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-slow-UTF-8-17/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:59.985526+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-slow-UTF-8-17/data/create-BIG-file-run-grep-tests-on-it/output.txt
+    name: /create-BIG-file-run-grep-tests-on-it
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:00.183255+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-slow-UTF-8-17/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/grep-slow-UTF-8/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:48:01.923839+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:48:01.923773+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:48:01.923070+00:00'
+  fmf-id:
+    name: /Regression/inconsistent-w-and-alnum-behaviour
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0461541
+    extra-task: /CoreOS/grep/Regression/inconsistent-w-and-alnum-behaviour
+    id: e0800827-50f4-45ce-a1fe-3cf9b0e48b34
+  log:
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/output.txt
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/journal.txt
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/failures.yaml
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/journal.xml
+  name: /Regression/inconsistent-w-and-alnum-behaviour
+  note: []
+  original-result: fail
+  result: fail
+  serial-number: 18
+  start-time: '2026-11-24T20:48:00.452354+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:01.512751+00:00'
+    log:
+    - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:01.612363+00:00'
+    log:
+    - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: fail
+    result: fail
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:01.742783+00:00'
+    log:
+    - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/inconsistent-w-and-alnum-behaviour/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:48:03.556432+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:48:03.556375+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:48:03.555642+00:00'
+  fmf-id:
+    name: /Regression/lowercase-uppercase-wrong-searching
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0467387
+    extra-task: /CoreOS/grep/Regression/lowercase-uppercase-wrong-searching
+    id: 2a96b985-1e06-43d5-8a3c-0d934b17cf09
+  log:
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/output.txt
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/journal.txt
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/failures.yaml
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/journal.xml
+  name: /Regression/lowercase-uppercase-wrong-searching
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 19
+  start-time: '2026-11-24T20:48:01.984955+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:03.049352+00:00'
+    log:
+    - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:03.270937+00:00'
+    log:
+    - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:03.374802+00:00'
+    log:
+    - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/lowercase-uppercase-wrong-searching/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:48:05.040759+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:48:05.040708+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Sanity/grep-Fw-ASCII-20/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:48:05.040021+00:00'
+  fmf-id:
+    name: /Sanity/grep-Fw-ASCII
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061923
+    extra-task: /CoreOS/grep/Sanity/grep-Fw-ASCII
+    id: 7528bc37-53ea-4121-b335-1d6d7cd28979
+  log:
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/output.txt
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/journal.txt
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/failures.yaml
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/journal.xml
+  name: /Sanity/grep-Fw-ASCII
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 20
+  start-time: '2026-11-24T20:48:03.619453+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:04.613501+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:04.738202+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:04.853611+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Sanity/grep-Fw-ASCII/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:48:06.475534+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:48:06.475481+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Sanity/grep-P-crash-21/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:48:06.474791+00:00'
+  fmf-id:
+    name: /Sanity/grep-P-crash
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061924
+    extra-task: /CoreOS/grep/grep-P-crash
+    id: dff80c07-70f3-4bcd-914f-8c5e03d487c3
+  log:
+  - data/guest/default-0/Sanity/grep-P-crash-21/output.txt
+  - data/guest/default-0/Sanity/grep-P-crash-21/journal.txt
+  - data/guest/default-0/Sanity/grep-P-crash-21/failures.yaml
+  - data/guest/default-0/Sanity/grep-P-crash-21/journal.xml
+  name: /Sanity/grep-P-crash
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 21
+  start-time: '2026-11-24T20:48:05.104580+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:06.091710+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-P-crash-21/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:06.171723+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-P-crash-21/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:48:06.276400+00:00'
+    log:
+    - data/guest/default-0/Sanity/grep-P-crash-21/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Sanity/grep-P-crash/main.fmf

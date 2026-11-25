@@ -1,0 +1,147 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:44 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:44 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:44 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:44 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:44 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:44 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.NFbcHO02xC'
+/tmp/tmp.NFbcHO02xC /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/core-dump-with-recurse-and-perl-switch
+:: [ 20:47:44 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.NFbcHO02xC' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.oS4iYlmiCg into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [  BEGIN   ] :: Running reproducer :: actually running 'LANG=en_US.utf8 grep -r -P 'unit' /etc'
+/etc/bash_completion.d/redefine_filedir:        # 2>/dev/null for direct invocation, e.g. in the _filedir unit test
+/etc/rc.d/init.d/README:currently running services (and other units). Use "systemctl
+/etc/rc.d/init.d/README:list-unit-files" to get a listing of all known unit files, including
+/etc/rc.d/init.d/README:into a service unit foobar.service during system initialization.
+/etc/rc.d/init.d/functions:    # /dev/null associated when executed under systemd service units.
+/etc/rc.d/init.d/functions:# Convert the value ${1} of time unit ${2}-seconds into seconds:
+/etc/services:#>community.
+/etc/services:resacommunity   1154/tcp                # Community Service
+/etc/services:resacommunity   1154/udp                # Community Service
+/etc/services:community       2459/tcp                # Community
+/etc/services:community       2459/udp                # Community
+/etc/services:unite           3217/tcp                # Unified IP & Telecomm Environment
+/etc/services:unite           3217/udp                # Unified IP & Telecomm Environment
+/etc/services:p2pcommunity    3955/tcp                # p2pCommunity
+/etc/services:p2pcommunity    3955/udp                # p2pCommunity
+/etc/services:xandros-cms     4389/tcp                # Xandros Community Management Service
+/etc/services:xandros-cms     4389/udp                # Xandros Community Management Service
+grep: /etc/udev/hwdb.bin: binary file matches
+/etc/geoclue/geoclue.conf:# a community-run successor to the now-shut-down Mozilla Location Service.
+grep: /etc/java/java-17-openjdk/java-17-openjdk-17.0.21.1.2-2.2.el9.alma.1.x86_64/lib/security/public_suffix_list.dat: binary file matches
+:: [ 20:47:44 ] :: [   PASS   ] :: Running reproducer (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.D58UhjlIRF into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/core-dump-with-recurse-and-perl-switch
+:: [ 20:47:44 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:44 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.NFbcHO02xC'
+:: [ 20:47:44 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.QHdz6hYil8 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 14
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/core-dump-with-recurse-and-perl-switch
+    Test started  : 2026-11-24 20:47:43 UTC
+    Test finished : 2026-11-24 20:47:44 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:44 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:44 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:44 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:44 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.NFbcHO02xC' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [   PASS   ] :: Running reproducer (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:44 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/core-dump-with-recurse-and-perl-switch
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:44 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:44 ] :: [   LOG    ] :: Asserts fingerprint: wG6Jb0bU
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/core-dump-with-recurse-and-perl-switch)
+

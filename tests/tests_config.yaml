@@ -49,6 +49,17 @@ opennebula_vm_group: ""
 opennebula_network: ""
 bs_host: "http://web_server:8000"
 bs_token: "token"
+# Images of the docker environments, the only source of them: full names
+# with tags by "<dist_name>-<dist_version>" of the task (or
+# "<dist_name>-<dist_version>-<dist_arch>" for one architecture).
+# Only init images (systemd as PID 1): every docker container is an init
+# container. Every platform AlmaLinux init images serve (x86_64, x86_64_v2
+# for 10, i686, aarch64, ppc64le, s390x) is in the same tag.
+docker_images:
+  almalinux-8: "almalinux/8-init:8"
+  almalinux-9: "almalinux/9-init:9"
+  almalinux-10: "almalinux/10-init:10"
+  almalinux-10-kitten: "almalinux/10-kitten-init:10-kitten"
 logs_uploader_config:
   pulp_host: "http://pulp"
   pulp_user: "user"

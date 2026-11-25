@@ -1,0 +1,17 @@
+# Environment of the fake tools (tests/e2e/fake_tools.py) for this task
+# Commit tests/grep has: fetching any other commit fails
+commit: 1531e510fe5f35bef344c637fefced85038c69f7
+# Plans of the tests repository the fake tmt knows; the tests of a plan
+# are the entries of results/<plan>/execute/results.yaml
+plans:
+  - /plans/tier1/public
+  - /plans/tier2-tier3/public
+  - /plans/others/public
+# "tmt plans export --how yaml" output
+plans_export:
+  - name: /plans/tier1/public
+    discover: {how: fmf, filter: 'tier: 1'}
+  - name: /plans/tier2-tier3/public
+    discover: {how: fmf, filter: 'tier: 2 | tier: 3'}
+  - name: /plans/others/public
+    discover: {how: fmf, filter: 'tier: -1 & tier: -2 & tier: -3 & tag: -multihost'}

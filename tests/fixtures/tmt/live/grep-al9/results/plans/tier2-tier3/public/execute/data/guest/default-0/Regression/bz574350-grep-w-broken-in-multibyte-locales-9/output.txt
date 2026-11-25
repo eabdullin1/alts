@@ -1,0 +1,130 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:36 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:36 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:36 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:36 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=`mktemp -d`'
+:: [ 20:47:36 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:36 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.3Rq6N8SQbq'
+/tmp/tmp.3Rq6N8SQbq /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz574350-grep-w-broken-in-multibyte-locales
+:: [ 20:47:36 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.3Rq6N8SQbq' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.OvbBdAtdp4 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:36 ] :: [  BEGIN   ] :: grep matched something :: actually running 'echo za a | LANG=ja_JP.eucjp grep -w a'
+za a
+:: [ 20:47:36 ] :: [   PASS   ] :: grep matched something (Expected 0, got 0)
+:: [ 20:47:36 ] :: [   PASS   ] :: Matched 'za a' (Assert: 'za a' should equal 'za a')
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.SaSNxPKT13 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:36 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz574350-grep-w-broken-in-multibyte-locales
+:: [ 20:47:36 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:36 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.3Rq6N8SQbq'
+:: [ 20:47:36 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.a39ttJSNDy into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 9
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz574350-grep-w-broken-in-multibyte-locales
+    Test started  : 2026-11-24 20:47:35 UTC
+    Test finished : 2026-11-24 20:47:36 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:36 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:36 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:36 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:36 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:36 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.3Rq6N8SQbq' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:36 ] :: [   PASS   ] :: grep matched something (Expected 0, got 0)
+:: [ 20:47:36 ] :: [   PASS   ] :: Matched 'za a' (Assert: 'za a' should equal 'za a')
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:36 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:36 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz574350-grep-w-broken-in-multibyte-locales
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:37 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:37 ] :: [   LOG    ] :: Asserts fingerprint: GLWAc0zH
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz574350-grep-w-broken-in-multibyte-locales)
+

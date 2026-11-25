@@ -1,4 +1,5 @@
 import os
+import re
 import ssl
 from logging import Logger
 from typing import (
@@ -20,11 +21,13 @@ __all__ = [
     'AsyncSSHParams',
     'CeleryConfig',
     'CommandResult',
+    'PackageTests',
     'Repository',
     'SchedulerConfig',
     'TaskRequestResponse',
     'TaskRequestPayload',
     'TaskResultResponse',
+    'TmtTestsConfig',
 ]
 
 
@@ -75,6 +78,41 @@ class TestFlavor(BaseModel):
     version: str
 
 
+class TmtTestsConfig(BaseModel):
+    # Plans to run, ALBS sends only the plans for the platform and the
+    # architecture of the task (alts.yaml tmt.plans, CFG-1)
+    plans: List[str] = []
+    # Like "tmt run tests --filter"
+    filter: Optional[str] = None
+    # Added to the context ALTS sets itself (distro, arch, initiator),
+    # e.g. component, the source package name (D-8, ALTS-14)
+    context: Dict[str, Union[str, List[str]]] = {}
+    # Environment variables of the tests ("tmt run -e")
+    environment: Dict[str, str] = {}
+
+
+class PackageTests(BaseModel):
+    # tests/<pkg> repository and the commit to test, a full hash:
+    # ALTS checks out exactly this commit and fails if it can't (ALTS-3)
+    url: str
+    commit: str
+    # Binary packages of the build to install before running tmt and to
+    # put into /var/share/test-artifacts, as CentOS CI does (ALTS-5),
+    # as dnf package specs, e.g. name-version-release.arch
+    packages: List[str] = []
+    # Run the tmt tests stage; a task with it is a component test task
+    # (D-3): the stages of a single package are not run
+    tmt: Optional[TmtTestsConfig] = None
+
+    @field_validator('commit')
+    @classmethod
+    def validate_commit(cls, value: str) -> str:
+        value = value.strip().lower()
+        if not re.fullmatch(r'[0-9a-f]{40}|[0-9a-f]{64}', value):
+            raise ValueError('commit must be a full git commit hash')
+        return value
+
+
 class TaskRequestPayload(BaseModel):
     bs_task_id: int
     runner_type: Literal['any', 'docker', 'opennebula'] = 'any'
@@ -97,6 +135,8 @@ class TaskRequestPayload(BaseModel):
     # third_party_tests, uninstall_package, or third_party_test_<test file>
     # for a single third-party test, where the file may be a shell pattern
     skipped_tests: Optional[List[str]] = None
+    # tmt tests of the component from tests/<pkg>, see PackageTests
+    package_tests: Optional[PackageTests] = None
 
 
 class TaskRequestResponse(BaseModel):
@@ -157,17 +197,6 @@ class OpennebulaConfig(BaseModel):
     default_vm_disk_size: Optional[int] = 15360
     default_vm_ram_size: Optional[int] = 1536
     network: Optional[str] = None
-
-
-class DockerImageOverride(BaseModel):
-    # Replaces the image repository (the part before ':<version>')
-    # for matching Docker environments, e.g. to pull i386 images
-    # from a registry that still publishes them
-    dist_name: str
-    # Matched against the full version and its major part
-    dist_versions: List[str]
-    platform: str
-    image: str
 
 
 class QueueArchOverride(BaseModel):
@@ -360,7 +389,19 @@ class CeleryConfig(BaseModel):
     package_proxy: str = ''
     cleanup_yum_conf_docs_settings: bool = True
     ignore_ansible_install_errors: bool = False
-    docker_image_overrides: List[DockerImageOverride] = []
+    # The only source of the images of the docker environments, by
+    # "<dist_name>-<dist_version>" of the task, e.g. "almalinux-9" or
+    # "almalinux-10-kitten"; "<dist_name>-<dist_version>-<dist_arch>"
+    # (e.g. "almalinux-9-i686") takes precedence for an architecture.
+    # The major version is tried after the full one ("almalinux-9" for
+    # 9.6). A value is the full name with its tag of an init image
+    # (systemd as PID 1), e.g. almalinux/9-init:9. A task of a platform
+    # not listed here fails.
+    docker_images: Dict[str, str] = {}
+    # tmt tasks install tmt and much more in initial provision
+    tmt_provision_timeout: int = 1800  # 30 minutes in seconds
+    # Must fit into task_soft_time_limit together with the provision
+    tmt_exec_timeout: int = 5400  # 1.5 hours in seconds
     development_mode: bool = False
     authorize_build_repositories: bool = False
 

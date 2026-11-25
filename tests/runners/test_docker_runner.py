@@ -1,12 +1,25 @@
+import os
 from pathlib import Path
 from typing import Callable, List, Tuple
 
 import pytest
+import yaml
+from pydantic import ValidationError
 
-from alts.shared.models import DockerImageOverride
+from alts.shared.exceptions import WorkDirPreparationError
+from alts.shared.models import CeleryConfig
 from alts.worker import CONFIG
 from alts.worker.runners import DockerRunner
-from alts.worker.runners.docker import ARCH_PLATFORM_MAPPING
+from alts.worker.runners import base as base_runner
+from alts.worker.runners.docker import DockerImageNotConfigured
+
+DOCKER_IMAGES = {
+    'almalinux-8': 'almalinux/8-init:8',
+    'almalinux-8.10': 'almalinux/8-init:8.10',
+    'almalinux-8-i686': 'quay.io/example/almalinux-init:8',
+    'almalinux-9': 'almalinux/9-init:9',
+    'almalinux-10-kitten': 'almalinux/10-kitten-init:10-kitten',
+}
 
 # from pyfakefs.fake_filesystem_unittest import TestCase
 
@@ -124,30 +137,32 @@ class TestDockerRunner:
         'dist_name, dist_version, dist_arch, expected',
         [
             pytest.param(
-                'almalinux', '8', 'i686',
-                'quay.io/almalinuxautobot/almalinux:8',
-                id='overridden',
+                'almalinux', '9', 'x86_64', 'almalinux/9-init:9', id='9',
             ),
             pytest.param(
-                'almalinux', '9.6', 'i386',
-                'quay.io/almalinuxautobot/almalinux:9.6',
-                id='overridden-by-major-version',
+                'almalinux', '9.6', 'aarch64', 'almalinux/9-init:9',
+                id='major-version',
             ),
             pytest.param(
-                'almalinux', '8', 'x86_64', 'almalinux:8',
-                id='other-arch',
+                'almalinux', '10-kitten', 'x86_64_v2',
+                'almalinux/10-kitten-init:10-kitten', id='kitten',
             ),
             pytest.param(
-                'almalinux', '10', 'i686', 'almalinux:10',
-                id='other-version',
+                'almalinux', '8', 'i686', 'quay.io/example/almalinux-init:8',
+                id='architecture-entry',
             ),
             pytest.param(
-                'centos', '8', 'i686', 'centos:8',
-                id='other-dist',
+                'almalinux', '8.10', 'i686',
+                'quay.io/example/almalinux-init:8',
+                id='architecture-entry-major-version',
+            ),
+            pytest.param(
+                'almalinux', '8.10', 'x86_64', 'almalinux/8-init:8.10',
+                id='full-version-first',
             ),
         ],
     )
-    def test_get_image_name(
+    def test_docker_image(
         self,
         monkeypatch: pytest.MonkeyPatch,
         dist_name: str,
@@ -155,18 +170,8 @@ class TestDockerRunner:
         dist_arch: str,
         expected: str,
     ):
-        monkeypatch.setattr(
-            CONFIG,
-            'docker_image_overrides',
-            [
-                DockerImageOverride(
-                    dist_name='almalinux',
-                    dist_versions=['8', '9'],
-                    platform='linux/386',
-                    image='quay.io/almalinuxautobot/almalinux',
-                ),
-            ],
-        )
+        """docker_images of the config is the only source of the image."""
+        monkeypatch.setattr(CONFIG, 'docker_images', DOCKER_IMAGES)
         runner = DockerRunner(
             'test_id',
             task_is_aborted,
@@ -174,8 +179,77 @@ class TestDockerRunner:
             dist_version,
             dist_arch=dist_arch,
         )
-        image_platform = ARCH_PLATFORM_MAPPING.get(dist_arch)
-        assert runner._get_image_name(image_platform) == expected
+        assert runner.docker_image == expected
+        assert runner.init_container is True
+
+    @pytest.mark.parametrize(
+        'dist_name, dist_version, dist_arch',
+        [
+            pytest.param('almalinux', '7', 'x86_64', id='no-version'),
+            pytest.param('centos', '9', 'x86_64', id='no-distribution'),
+        ],
+    )
+    def test_docker_image_not_configured(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+        dist_name: str,
+        dist_version: str,
+        dist_arch: str,
+    ):
+        monkeypatch.setattr(CONFIG, 'docker_images', DOCKER_IMAGES)
+        runner = DockerRunner(
+            'test_id',
+            task_is_aborted,
+            dist_name,
+            dist_version,
+            dist_arch=dist_arch,
+        )
+        with pytest.raises(
+            DockerImageNotConfigured,
+            match=(
+                f'no docker image for {dist_name} {dist_version} '
+                f'{dist_arch} in docker_images of the worker config, '
+                f'looked for: {dist_name}-{dist_version}-{dist_arch}, '
+                f'{dist_name}-{dist_version}$'
+            ),
+        ):
+            runner.docker_image
+
+    def test_docker_image_not_configured_fails_the_task(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+        tmp_path: Path,
+    ):
+        """No entry: the environment isn't prepared, the error says why."""
+        monkeypatch.setattr(CONFIG, 'docker_images', {})
+        monkeypatch.setattr(
+            base_runner.BaseRunner, '__del__', lambda self: None,
+        )
+        runner = DockerRunner('test_id', task_is_aborted, 'almalinux', '9')
+        with pytest.raises(WorkDirPreparationError) as error:
+            runner.prepare_work_dir_files()
+        assert isinstance(error.value.__cause__, DockerImageNotConfigured)
+        assert 'no docker image for almalinux 9 x86_64' in str(
+            error.value.__cause__
+        )
+
+    def test_docker_images_config(self):
+        """A value is the full name of an init image, nothing else."""
+        data = yaml.safe_load(
+            Path(os.environ['CELERY_CONFIG_PATH']).read_text()
+        )
+        data['docker_images'] = {'almalinux-9': 'almalinux/9-init:9'}
+        assert CeleryConfig(**data).docker_images == {
+            'almalinux-9': 'almalinux/9-init:9',
+        }
+        data['docker_images'] = {
+            'almalinux-9': {'image': 'almalinux:9', 'init': False},
+        }
+        with pytest.raises(ValidationError, match='docker_images'):
+            CeleryConfig(**data)
+        # No defaults in the code: the config is the only source
+        del data['docker_images']
+        assert CeleryConfig(**data).docker_images == {}
 
     # def setUp(self) -> None:
     #     self.patcher = patch('os.stat', MagicMock())

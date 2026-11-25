@@ -33,6 +33,7 @@ from alts.shared.exceptions import (
     StopEnvironmentError,
     TerraformInitializationError,
     ThirdPartyTestError,
+    TmtTestsError,
     UninstallPackageError,
     AbortedTestTask,
     VMImageNotFound,
@@ -44,6 +45,7 @@ from alts.worker.mappings import RUNNER_MAPPING
 from alts.worker.runners.base import TESTS_SECTIONS_NAMES
 from alts.worker.runners.docker import DockerRunner
 from alts.worker.runners.opennebula import OpennebulaRunner
+from alts.worker.tmt import TMT_SECTION_NAME, TMT_STAGE_NAME
 
 __all__ = ['run_tests']
 
@@ -198,6 +200,13 @@ def run_tests(self, task_params: dict, tests_to_skip: dict):
         'test_flavor': task_params.get('test_flavor', {}),
         'vm_alive': task_params.get('vm_alive')
     }
+    package_tests = task_params.get('package_tests') or {}
+    # A task with tmt tests is a component test task (D-3): it runs the
+    # tmt plans of tests/<pkg> in an init container instead of the
+    # stages of a single package
+    tmt_task = bool(package_tests.get('tmt'))
+    if package_tests:
+        runner_kwargs['package_tests'] = package_tests
 
     runner_class = RUNNER_MAPPING[task_params['runner_type']]
     runner: Union[DockerRunner, OpennebulaRunner] = runner_class(
@@ -229,6 +238,14 @@ def run_tests(self, task_params: dict, tests_to_skip: dict):
 
         runner.setup()
         runner.run_system_info_commands()
+        if tmt_task:
+            run_or_skip(
+                'run_tmt_tests',
+                runner.run_tmt_tests,
+                package_tests,
+                skipped_tests=skipped_tests,
+            )
+            return
         run_or_skip(
             "install_package",
             runner.install_package,
@@ -272,6 +289,8 @@ def run_tests(self, task_params: dict, tests_to_skip: dict):
         logging.exception('Package integrity tests failed: %s', exc)
     except ThirdPartyTestError as exc:
         logging.exception('Third party tests failed: %s', exc)
+    except TmtTestsError as exc:
+        logging.exception('tmt tests stage failed: %s', exc)
     except UninstallPackageError as exc:
         logging.exception('Cannot uninstall package: %s', exc)
     except StopEnvironmentError as exc:
@@ -296,11 +315,19 @@ def run_tests(self, task_params: dict, tests_to_skip: dict):
             summary['revoked'] = True
         else:
             summary['skipped_tests'].extend(runner.skipped_third_party_tests)
+            summary['skipped_tests'].extend(runner.skipped_tmt_tests)
             for stage, stage_data in runner.artifacts.items():
                 # FIXME: Temporary solution, needs to be removed when this
                 #  test system will be the only running one
                 if stage not in TESTS_SECTIONS_NAMES:
                     stage_info = {'success': is_success(stage_data)}
+                    if stage == TMT_STAGE_NAME:
+                        # The stage succeeds when tmt has run all the
+                        # plans, its output is not TAP
+                        stage_info = {
+                            'success': stage_data.get('exit_code') == 0,
+                            **runner.tmt_report,
+                        }
                     if CONFIG.logs_uploader_config.skip_artifacts_upload:
                         stage_info.update(stage_data)
                     summary[stage] = stage_info
@@ -308,6 +335,19 @@ def run_tests(self, task_params: dict, tests_to_skip: dict):
                 if stage not in summary:
                     summary[stage] = {}
                 for inner_stage, inner_data in stage_data.items():
+                    if stage == TMT_SECTION_NAME:
+                        # A failed tmt test doesn't fail the task by
+                        # itself: ALBS decides by the rules of alts.yaml
+                        tmt_info = dict(inner_data['tmt'])
+                        stage_info = {
+                            'success': inner_data['exit_code'] == 0,
+                            'output': tmt_info.pop('summary'),
+                            **tmt_info,
+                        }
+                        if CONFIG.logs_uploader_config.skip_artifacts_upload:
+                            stage_info['stdout'] = inner_data['stdout']
+                        summary[stage][inner_stage] = stage_info
+                        continue
                     stage_info = {
                         'success': is_success(inner_data),
                         'output': inner_data['stdout'],

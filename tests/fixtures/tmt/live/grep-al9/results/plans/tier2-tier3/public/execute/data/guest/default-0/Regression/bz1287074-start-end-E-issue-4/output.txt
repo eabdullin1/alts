@@ -1,0 +1,132 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:27 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:27 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:27 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+grep
+:: [ 20:47:27 ] :: [   PASS   ] :: Binary 'grep' should belong to: grep 
+:: [ 20:47:27 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:27 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:27 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.fmZFdEIHxp'
+/tmp/tmp.fmZFdEIHxp /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1287074-start-end-E-issue
+:: [ 20:47:27 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.fmZFdEIHxp' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.zI7xPSaeox into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [  BEGIN   ] :: Running reproducer :: actually running 'echo -n 'abba' | grep -E '^b|b$' | tee output.log'
+:: [ 20:47:27 ] :: [   PASS   ] :: Running reproducer (Expected 1, got 1)
+:: [ 20:47:27 ] :: [   PASS   ] :: File 'output.log' should not contain 'abba' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.VWOEyc82oH into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1287074-start-end-E-issue
+:: [ 20:47:27 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:27 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.fmZFdEIHxp'
+:: [ 20:47:27 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.38bjzLixDG into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 4
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz1287074-start-end-E-issue
+    Test started  : 2026-11-24 20:47:26 UTC
+    Test finished : 2026-11-24 20:47:27 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:27 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:27 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:27 ] :: [   PASS   ] :: Binary 'grep' should belong to: grep 
+:: [ 20:47:27 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:27 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.fmZFdEIHxp' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [   PASS   ] :: Running reproducer (Expected 1, got 1)
+:: [ 20:47:27 ] :: [   PASS   ] :: File 'output.log' should not contain 'abba' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:27 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz1287074-start-end-E-issue
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:27 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:28 ] :: [   LOG    ] :: Asserts fingerprint: jJDG+ZKM
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1287074-start-end-E-issue-4'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz1287074-start-end-E-issue)
+

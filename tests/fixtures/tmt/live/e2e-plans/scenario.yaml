@@ -1,0 +1,21 @@
+# Environment of the fake tools for the live run of the e2e plans
+commit: 6d5e624ec018c2f993e6f66fec8a6d0d90ff66fd
+plans:
+  - /plans/e2e/gating
+  - /plans/e2e/info
+plans_export:
+  - name: /plans/e2e/gating
+    discover: {how: fmf, test: ['^/e2e/pass$', '^/e2e/skipme$']}
+  - name: /plans/e2e/info
+    discover: {how: fmf, test: ['^/e2e/fail$']}
+# /e2e/skipme is in the gating plan, but the live run left it out (it is in
+# skipped_tests of the payload), so results.yaml doesn't have it. If ALTS
+# didn't leave it out, the fake tmt would run it and it would fail.
+extra_tests:
+  /plans/e2e/gating:
+    - name: /e2e/skipme
+      result: fail
+      note: []
+      duration: '00:00:00'
+      log:
+        - data/guest/default-0/e2e/skipme-1/output.txt

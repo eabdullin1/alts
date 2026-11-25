@@ -1,0 +1,66 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Testing
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:33 ] :: [   LOG    ] :: Runnning echo loremipsum | LC_ALL=ko_KR grep -Fi 1, with 5 seconds timeout
+:: [ 20:47:34 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[2]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:35 ] :: [   PASS   ] :: Checking if the command passed and didn't hang and have to be killed (Assert: expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Testing)
+
+tmt-report-result: saving /Testing output /tmp/tmp.cf6J6EbJdL into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/data/Testing/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 8
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz460641-korean-grep-eats-cpu
+    Test started  : 2026-11-24 20:47:32 UTC
+    Test finished : 2026-11-24 20:47:35 UTC (still running)
+    Test duration : 3 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Testing
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:33 ] :: [   LOG    ] :: Runnning echo loremipsum | LC_ALL=ko_KR grep -Fi 1, with 5 seconds timeout
+:: [ 20:47:34 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:35 ] :: [   PASS   ] :: Checking if the command passed and didn't hang and have to be killed (Assert: expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Testing)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz460641-korean-grep-eats-cpu
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:35 ] :: [   LOG    ] :: Phases fingerprint:  L5rLAvqh
+:: [ 20:47:35 ] :: [   LOG    ] :: Asserts fingerprint: L5rLAvqh
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 3s
+::   Phases: 1 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz460641-korean-grep-eats-cpu)
+

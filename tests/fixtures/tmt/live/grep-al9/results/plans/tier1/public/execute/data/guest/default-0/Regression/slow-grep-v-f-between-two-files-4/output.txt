@@ -1,0 +1,136 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:13 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:13 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:13 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:13 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:13 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:13 ] :: [  BEGIN   ] :: Running 'cp file* /tmp/tmp.MsX1pfX7PT'
+:: [ 20:47:13 ] :: [   PASS   ] :: Command 'cp file* /tmp/tmp.MsX1pfX7PT' (Expected 0, got 0)
+:: [ 20:47:13 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.MsX1pfX7PT'
+/tmp/tmp.MsX1pfX7PT /var/tmp/tmt/run/plans/tier1/public/discover/default-0/tests/Regression/slow-grep-v-f-between-two-files
+:: [ 20:47:13 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.MsX1pfX7PT' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.wrVLZVCC7R into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:13 ] :: [  BEGIN   ] :: Running 'rlWatchdog 'grep -v -f file1.txt file2.txt' 90'
+:: [ 20:47:13 ] :: [   LOG    ] :: Runnning grep -v -f file1.txt file2.txt, with 90 seconds timeout
+wa95dbx3
+:: [ 20:47:14 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+[2]+  Terminated              eval "sleep $timeout; touch __INTERNAL_TIMEOUT"
+:: [ 20:47:15 ] :: [   PASS   ] :: Command 'rlWatchdog 'grep -v -f file1.txt file2.txt' 90' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.29QBNX5NHQ into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:15 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier1/public/discover/default-0/tests/Regression/slow-grep-v-f-between-two-files
+:: [ 20:47:15 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:15 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.MsX1pfX7PT'
+:: [ 20:47:15 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.gftEaEUVcv into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 4
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/slow-grep-v-f-between-two-files
+    Test started  : 2026-11-24 20:47:12 UTC
+    Test finished : 2026-11-24 20:47:15 UTC (still running)
+    Test duration : 3 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:13 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:13 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:13 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:13 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:13 ] :: [   PASS   ] :: Command 'cp file* /tmp/tmp.MsX1pfX7PT' (Expected 0, got 0)
+:: [ 20:47:13 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.MsX1pfX7PT' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 4 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:13 ] :: [   LOG    ] :: Runnning grep -v -f file1.txt file2.txt, with 90 seconds timeout
+:: [ 20:47:14 ] :: [   LOG    ] :: Command ended itself, I am not killing it.
+:: [ 20:47:15 ] :: [   PASS   ] :: Command 'rlWatchdog 'grep -v -f file1.txt file2.txt' 90' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:15 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:15 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/slow-grep-v-f-between-two-files
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:15 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:15 ] :: [   LOG    ] :: Asserts fingerprint: GLWAc0zH
+File '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 3s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/slow-grep-v-f-between-two-files)
+

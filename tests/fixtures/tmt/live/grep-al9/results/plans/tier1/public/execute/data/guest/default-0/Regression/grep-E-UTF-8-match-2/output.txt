@@ -1,0 +1,95 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:10 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:10 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:10 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.AiTp8YwZKX into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:10 ] :: [  BEGIN   ] :: Running 'echo abc123def456ghi | egrep "^[[:alpha:]]{3}([[:digit:]]{3}[[:alpha:]]{3}){2}"'
+abc123def456ghi
+:: [ 20:47:10 ] :: [   PASS   ] :: Command 'echo abc123def456ghi | egrep "^[[:alpha:]]{3}([[:digit:]]{3}[[:alpha:]]{3}){2}"' (Expected 0, got 0)
+abc123def456ghi
+:: [ 20:47:10 ] :: [   PASS   ] :: File '/dev/fd/63' should contain '^[[:alpha:]]{3}([[:digit:]]{3}[[:alpha:]]{3}){2}' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.SKQYVenK4D into /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 2
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/grep-E-UTF-8-match
+    Test started  : 2026-11-24 20:47:09 UTC
+    Test finished : 2026-11-24 20:47:10 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:10 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:10 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:10 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 1 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:10 ] :: [   PASS   ] :: Command 'echo abc123def456ghi | egrep "^[[:alpha:]]{3}([[:digit:]]{3}[[:alpha:]]{3}){2}"' (Expected 0, got 0)
+:: [ 20:47:10 ] :: [   PASS   ] :: File '/dev/fd/63' should contain '^[[:alpha:]]{3}([[:digit:]]{3}[[:alpha:]]{3}){2}' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/grep-E-UTF-8-match
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:10 ] :: [   LOG    ] :: Phases fingerprint:  +4gEhNYZ
+:: [ 20:47:10 ] :: [   LOG    ] :: Asserts fingerprint: GpTeNtEf
+File '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier1/public/execute/data/guest/default-0/Regression/grep-E-UTF-8-match-2'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 2 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/grep-E-UTF-8-match)
+

@@ -1,0 +1,150 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:25 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:25 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:25 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+grep
+:: [ 20:47:25 ] :: [   PASS   ] :: Binary 'grep' should belong to: grep 
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:25 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.rl1Fnwg87y'
+/tmp/tmp.rl1Fnwg87y /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1256756-grep-r-has-been-broken
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.rl1Fnwg87y' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'touch foo.txt'
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'touch foo.txt' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'echo 'bash' > foo.txt'
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'echo 'bash' > foo.txt' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.diW9rr6VC7 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Testing GREP_LEGACY_R=0
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'export GREP_LEGACY_R=0'
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'export GREP_LEGACY_R=0' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'rpm -qa | grep -rR bash | tee output_stdin.log'
+foo.txt:bash
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'rpm -qa | grep -rR bash | tee output_stdin.log' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: File 'output_stdin.log' should contain 'foo' 
+foo.txt:bash
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'grep -rR bash . | tee output.log'
+./foo.txt:bash
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'grep -rR bash . | tee output.log' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: File 'output.log' should contain 'foo' 
+./foo.txt:bash
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 5 good, 0 bad
+::   RESULT: PASS (Testing GREP_LEGACY_R=0)
+
+tmt-report-result: saving /Testing-GREP-LEGACY-R-0 output /tmp/tmp.O43hS1JcHB into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Testing-GREP-LEGACY-R-0/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/bz1256756-grep-r-has-been-broken
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.rl1Fnwg87y'
+:: [ 20:47:25 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.bC9sj2pQyZ into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 3
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/bz1256756-grep-r-has-been-broken
+    Test started  : 2026-11-24 20:47:24 UTC
+    Test finished : 2026-11-24 20:47:25 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:25 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:25 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:25 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:25 ] :: [   PASS   ] :: Binary 'grep' should belong to: grep 
+:: [ 20:47:25 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.rl1Fnwg87y' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'touch foo.txt' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'echo 'bash' > foo.txt' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Testing GREP_LEGACY_R=0
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'export GREP_LEGACY_R=0' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'rpm -qa | grep -rR bash | tee output_stdin.log' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: File 'output_stdin.log' should contain 'foo' 
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'grep -rR bash . | tee output.log' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: File 'output.log' should contain 'foo' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 5 good, 0 bad
+::   RESULT: PASS (Testing GREP_LEGACY_R=0)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:25 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:25 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/bz1256756-grep-r-has-been-broken
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:26 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:26 ] :: [   LOG    ] :: Asserts fingerprint: 1U5WiVuE
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/bz1256756-grep-r-has-been-broken)
+

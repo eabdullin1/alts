@@ -1,0 +1,14 @@
+# Environment of the fake tools for the live run of tests/grep
+commit: 1531e510fe5f35bef344c637fefced85038c69f7
+plans:
+  - /plans/tier1/public
+  - /plans/tier2-tier3/public
+  - /plans/others/public
+# "tmt plans export" of these plans, from plans/*.fmf of tests/grep at the commit
+plans_export:
+  - name: /plans/tier1/public
+    discover: {how: fmf, filter: 'tier: 1'}
+  - name: /plans/tier2-tier3/public
+    discover: {how: fmf, filter: 'tier: 2 | tier: 3'}
+  - name: /plans/others/public
+    discover: {how: fmf, filter: 'tier: -1 & tier: -2 & tier: -3 & tag: -multihost'}

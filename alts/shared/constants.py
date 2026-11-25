@@ -77,5 +77,6 @@ TESTS_MAPPING = {
     'install_package': 'install_package',
     'run_package_integrity_tests': 'package_integrity_tests',
     'run_third_party_tests': 'third_party_tests',
+    'run_tmt_tests': 'tmt_tests',
     'uninstall_package': 'uninstall_package',
 }

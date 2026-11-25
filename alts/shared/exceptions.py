@@ -18,6 +18,7 @@ __all__ = [
     'SystemInfoCmdError',
     'TerraformInitializationError',
     'ThirdPartyTestError',
+    'TmtTestsError',
     'WorkDirPreparationError',
     'PackageIntegrityTestsError',
     'UninstallPackageError',
@@ -84,6 +85,10 @@ class VMImageNotFound(StartEnvironmentError):
 
 class ThirdPartyTestError(ALTSBaseError):
     """Error occurred while running third party test"""
+
+
+class TmtTestsError(ALTSBaseError):
+    """The tmt tests stage itself is broken, not a tmt test failed"""
 
 
 class SystemInfoCmdError(ALTSBaseError):

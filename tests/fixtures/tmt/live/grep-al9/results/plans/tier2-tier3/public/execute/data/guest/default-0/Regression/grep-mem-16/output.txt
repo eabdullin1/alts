@@ -1,0 +1,156 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:47:49 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:49 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:49 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:47:49 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.aWTpQgDIpr'
+/tmp/tmp.aWTpQgDIpr /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/grep-mem
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.aWTpQgDIpr' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.xvDT5mmAlE into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'dd if=/dev/zero of=sparse seek=700000000 bs=1 count=1'
+1+0 records in
+1+0 records out
+1 byte copied, 4.1628e-05 s, 24.0 kB/s
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'dd if=/dev/zero of=sparse seek=700000000 bs=1 count=1' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'echo foo >> sparse
+        (ulimit -v 500000
+        grep foo sparse 2>stderr 1>stdout)'
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo foo >> sparse
+        (ulimit -v 500000
+        grep foo sparse 2>stderr 1>stdout)' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'echo "Grep error output after test:"'
+Grep error output after test:
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo "Grep error output after test:"' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'cat stderr'
+grep: sparse: binary file matches
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'cat stderr' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'echo "Grep standard output after test:q"'
+Grep standard output after test:q
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo "Grep standard output after test:q"' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'cat stdout'
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'cat stdout' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Pattern found at the end of the file 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 7 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.Mo2jn2hjg1 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/grep-mem
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.aWTpQgDIpr'
+:: [ 20:47:49 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.Wl4cQt8uBo into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 16
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/grep-mem
+    Test started  : 2026-11-24 20:47:48 UTC
+    Test finished : 2026-11-24 20:47:50 UTC (still running)
+    Test duration : 2 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:49 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:47:49 ] :: [   LOG    ] :: Package versions:
+:: [ 20:47:49 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:47:49 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.aWTpQgDIpr' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'dd if=/dev/zero of=sparse seek=700000000 bs=1 count=1' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo foo >> sparse
+        (ulimit -v 500000
+        grep foo sparse 2>stderr 1>stdout)' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo "Grep error output after test:"' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'cat stderr' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'echo "Grep standard output after test:q"' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'cat stdout' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Pattern found at the end of the file 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 7 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:49 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:47:49 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/grep-mem
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:47:50 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:47:50 ] :: [   LOG    ] :: Asserts fingerprint: uL6mVwNk
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/grep-mem-16'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 2s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/grep-mem)
+

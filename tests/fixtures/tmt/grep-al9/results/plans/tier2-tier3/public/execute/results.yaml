@@ -1,0 +1,463 @@
+# execute/results.yaml of the plan, as tmt 1.78 writes it
+- name: /Regression/bz1040710-include-not-working-as-expected
+  serial-number: 1
+  fmf-id:
+    name: /Regression/bz1040710-include-not-working-as-expected
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/output.txt
+  - data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/journal.txt
+  start-time: '2026-11-24T17:20:00+00:00'
+  end-time: '2026-11-24T17:20:02+00:00'
+  duration: 00:00:02
+  data-path: data/guest/default-0/Regression/bz1040710-include-not-working-as-expected-1/data
+  check: []
+  subresult: []
+- name: /Regression/bz1050916-malformed-output-when-coloring-is-on
+  serial-number: 2
+  fmf-id:
+    name: /Regression/bz1050916-malformed-output-when-coloring-is-on
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: fail
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/output.txt
+  - data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/journal.txt
+  start-time: '2026-11-24T17:20:02+00:00'
+  end-time: '2026-11-24T17:20:05+00:00'
+  duration: 00:00:03
+  data-path: data/guest/default-0/Regression/bz1050916-malformed-output-when-coloring-is-on-2/data
+  check: []
+  subresult: []
+- name: /Regression/bz1256756-grep-r-has-been-broken
+  serial-number: 3
+  fmf-id:
+    name: /Regression/bz1256756-grep-r-has-been-broken
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/output.txt
+  - data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/journal.txt
+  start-time: '2026-11-24T17:20:05+00:00'
+  end-time: '2026-11-24T17:20:09+00:00'
+  duration: 00:00:04
+  data-path: data/guest/default-0/Regression/bz1256756-grep-r-has-been-broken-3/data
+  check: []
+  subresult: []
+- name: /Regression/bz1287074-start-end-E-issue
+  serial-number: 4
+  fmf-id:
+    name: /Regression/bz1287074-start-end-E-issue
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/output.txt
+  - data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/journal.txt
+  start-time: '2026-11-24T17:20:09+00:00'
+  end-time: '2026-11-24T17:20:14+00:00'
+  duration: 00:00:05
+  data-path: data/guest/default-0/Regression/bz1287074-start-end-E-issue-4/data
+  check: []
+  subresult: []
+- name: /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+  serial-number: 5
+  fmf-id:
+    name: /Regression/bz1567086-grep-does-not-provide-usr-bin-grep
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/output.txt
+  - data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/journal.txt
+  start-time: '2026-11-24T17:20:14+00:00'
+  end-time: '2026-11-24T17:20:20+00:00'
+  duration: 00:00:06
+  data-path: data/guest/default-0/Regression/bz1567086-grep-does-not-provide-usr-bin-grep-5/data
+  check: []
+  subresult: []
+- name: /Regression/bz204255-grep-empty-pattern
+  serial-number: 6
+  fmf-id:
+    name: /Regression/bz204255-grep-empty-pattern
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/output.txt
+  - data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/journal.txt
+  start-time: '2026-11-24T17:20:20+00:00'
+  end-time: '2026-11-24T17:20:22+00:00'
+  duration: 00:00:02
+  data-path: data/guest/default-0/Regression/bz204255-grep-empty-pattern-6/data
+  check: []
+  subresult: []
+- name: /Regression/bz434934-segfault-with-m-and-A
+  serial-number: 7
+  fmf-id:
+    name: /Regression/bz434934-segfault-with-m-and-A
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/output.txt
+  - data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/journal.txt
+  start-time: '2026-11-24T17:20:22+00:00'
+  end-time: '2026-11-24T17:20:25+00:00'
+  duration: 00:00:03
+  data-path: data/guest/default-0/Regression/bz434934-segfault-with-m-and-A-7/data
+  check: []
+  subresult: []
+- name: /Regression/bz460641-korean-grep-eats-cpu
+  serial-number: 8
+  fmf-id:
+    name: /Regression/bz460641-korean-grep-eats-cpu
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/output.txt
+  - data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/journal.txt
+  start-time: '2026-11-24T17:20:25+00:00'
+  end-time: '2026-11-24T17:20:29+00:00'
+  duration: 00:00:04
+  data-path: data/guest/default-0/Regression/bz460641-korean-grep-eats-cpu-8/data
+  check: []
+  subresult: []
+- name: /Regression/bz574350-grep-w-broken-in-multibyte-locales
+  serial-number: 9
+  fmf-id:
+    name: /Regression/bz574350-grep-w-broken-in-multibyte-locales
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/output.txt
+  - data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/journal.txt
+  start-time: '2026-11-24T17:20:29+00:00'
+  end-time: '2026-11-24T17:20:34+00:00'
+  duration: 00:00:05
+  data-path: data/guest/default-0/Regression/bz574350-grep-w-broken-in-multibyte-locales-9/data
+  check: []
+  subresult: []
+- name: /Regression/bz715295-process-grep-was-killed
+  serial-number: 10
+  fmf-id:
+    name: /Regression/bz715295-process-grep-was-killed
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/output.txt
+  - data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/journal.txt
+  start-time: '2026-11-24T17:20:34+00:00'
+  end-time: '2026-11-24T17:20:40+00:00'
+  duration: 00:00:06
+  data-path: data/guest/default-0/Regression/bz715295-process-grep-was-killed-10/data
+  check: []
+  subresult: []
+- name: /Regression/bz797934-segfault-for-grep-Fie
+  serial-number: 11
+  fmf-id:
+    name: /Regression/bz797934-segfault-for-grep-Fie
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/output.txt
+  - data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/journal.txt
+  start-time: '2026-11-24T17:20:40+00:00'
+  end-time: '2026-11-24T17:20:42+00:00'
+  duration: 00:00:02
+  data-path: data/guest/default-0/Regression/bz797934-segfault-for-grep-Fie-11/data
+  check: []
+  subresult: []
+- name: /Regression/bz826997-broken-ignore-case-with-UTF8
+  serial-number: 12
+  fmf-id:
+    name: /Regression/bz826997-broken-ignore-case-with-UTF8
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/output.txt
+  - data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/journal.txt
+  start-time: '2026-11-24T17:20:42+00:00'
+  end-time: '2026-11-24T17:20:45+00:00'
+  duration: 00:00:03
+  data-path: data/guest/default-0/Regression/bz826997-broken-ignore-case-with-UTF8-12/data
+  check: []
+  subresult: []
+- name: /Regression/core-dump-with-perl-regexps-on-some-binary-file
+  serial-number: 13
+  fmf-id:
+    name: /Regression/core-dump-with-perl-regexps-on-some-binary-file
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/output.txt
+  - data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/journal.txt
+  start-time: '2026-11-24T17:20:45+00:00'
+  end-time: '2026-11-24T17:20:49+00:00'
+  duration: 00:00:04
+  data-path: data/guest/default-0/Regression/core-dump-with-perl-regexps-on-some-binary-file-13/data
+  check: []
+  subresult: []
+- name: /Regression/core-dump-with-recurse-and-perl-switch
+  serial-number: 14
+  fmf-id:
+    name: /Regression/core-dump-with-recurse-and-perl-switch
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/output.txt
+  - data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/journal.txt
+  start-time: '2026-11-24T17:20:49+00:00'
+  end-time: '2026-11-24T17:20:54+00:00'
+  duration: 00:00:05
+  data-path: data/guest/default-0/Regression/core-dump-with-recurse-and-perl-switch-14/data
+  check: []
+  subresult: []
+- name: /Regression/grep-Fw-loop
+  serial-number: 15
+  fmf-id:
+    name: /Regression/grep-Fw-loop
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/grep-Fw-loop-15/output.txt
+  - data/guest/default-0/Regression/grep-Fw-loop-15/journal.txt
+  start-time: '2026-11-24T17:20:54+00:00'
+  end-time: '2026-11-24T17:21:00+00:00'
+  duration: 00:00:06
+  data-path: data/guest/default-0/Regression/grep-Fw-loop-15/data
+  check: []
+  subresult: []
+- name: /Regression/grep-mem
+  serial-number: 16
+  fmf-id:
+    name: /Regression/grep-mem
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/grep-mem-16/output.txt
+  - data/guest/default-0/Regression/grep-mem-16/journal.txt
+  start-time: '2026-11-24T17:21:00+00:00'
+  end-time: '2026-11-24T17:21:02+00:00'
+  duration: 00:00:02
+  data-path: data/guest/default-0/Regression/grep-mem-16/data
+  check: []
+  subresult: []
+- name: /Regression/grep-slow-UTF-8
+  serial-number: 17
+  fmf-id:
+    name: /Regression/grep-slow-UTF-8
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/output.txt
+  - data/guest/default-0/Regression/grep-slow-UTF-8-17/journal.txt
+  start-time: '2026-11-24T17:21:02+00:00'
+  end-time: '2026-11-24T17:21:05+00:00'
+  duration: 00:00:03
+  data-path: data/guest/default-0/Regression/grep-slow-UTF-8-17/data
+  check: []
+  subresult: []
+- name: /Regression/inconsistent-w-and-alnum-behaviour
+  serial-number: 18
+  fmf-id:
+    name: /Regression/inconsistent-w-and-alnum-behaviour
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: fail
+  note: []
+  log:
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/output.txt
+  - data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/journal.txt
+  start-time: '2026-11-24T17:21:05+00:00'
+  end-time: '2026-11-24T17:21:09+00:00'
+  duration: 00:00:04
+  data-path: data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data
+  check: []
+  subresult: []
+- name: /Regression/lowercase-uppercase-wrong-searching
+  serial-number: 19
+  fmf-id:
+    name: /Regression/lowercase-uppercase-wrong-searching
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/output.txt
+  - data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/journal.txt
+  start-time: '2026-11-24T17:21:09+00:00'
+  end-time: '2026-11-24T17:21:14+00:00'
+  duration: 00:00:05
+  data-path: data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data
+  check: []
+  subresult: []
+- name: /Sanity/grep-Fw-ASCII
+  serial-number: 20
+  fmf-id:
+    name: /Sanity/grep-Fw-ASCII
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/output.txt
+  - data/guest/default-0/Sanity/grep-Fw-ASCII-20/journal.txt
+  start-time: '2026-11-24T17:21:14+00:00'
+  end-time: '2026-11-24T17:21:20+00:00'
+  duration: 00:00:06
+  data-path: data/guest/default-0/Sanity/grep-Fw-ASCII-20/data
+  check: []
+  subresult: []
+- name: /Sanity/grep-P-crash
+  serial-number: 21
+  fmf-id:
+    name: /Sanity/grep-P-crash
+    path: /
+  context: {}
+  ids: {}
+  guest:
+    name: default-0
+    role: null
+    primary-address: localhost
+  result: pass
+  note: []
+  log:
+  - data/guest/default-0/Sanity/grep-P-crash-21/output.txt
+  - data/guest/default-0/Sanity/grep-P-crash-21/journal.txt
+  start-time: '2026-11-24T17:21:20+00:00'
+  end-time: '2026-11-24T17:21:22+00:00'
+  duration: 00:00:02
+  data-path: data/guest/default-0/Sanity/grep-P-crash-21/data
+  check: []
+  subresult: []

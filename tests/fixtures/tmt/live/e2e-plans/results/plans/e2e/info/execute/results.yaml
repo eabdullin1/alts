@@ -1,0 +1,58 @@
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:56:41.434029+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:56:41.433973+00:00'
+  context:
+    arch:
+    - x86_64
+    component:
+    - grep
+    distro:
+    - almalinux-9.9
+    - centos-stream-9
+    - rhel-9.9
+    initiator:
+    - albs
+  data-path: data/guest/default-0/e2e/fail-1/data
+  duration: 00:00:00
+  end-time: '2026-11-24T20:56:41.433227+00:00'
+  fmf-id:
+    name: /e2e/fail
+    ref: 6d5e624ec018c2f993e6f66fec8a6d0d90ff66fd
+    url: https://git.example.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: null
+    extra-task: null
+    id: null
+  log:
+  - data/guest/default-0/e2e/fail-1/output.txt
+  - data/guest/default-0/e2e/fail-1/failures.yaml
+  name: /e2e/fail
+  note: []
+  original-result: fail
+  result: fail
+  serial-number: 1
+  start-time: '2026-11-24T20:56:41.413957+00:00'
+  subresult: []
+  web-link: https://git.example.org/tests/grep.git/e2e.fmf

@@ -5,6 +5,7 @@ import logging
 import os
 import random
 import re
+import shlex
 import shutil
 import signal
 import tempfile
@@ -42,9 +43,11 @@ from alts.shared.exceptions import (
     StopEnvironmentError,
     TerraformInitializationError,
     ThirdPartyTestError,
+    TmtTestsError,
     UninstallPackageError,
     WorkDirPreparationError,
 )
+from alts.shared.models import PackageTests
 from alts.shared.types import ImmutableDict
 from alts.shared.uploaders.base import BaseLogsUploader, UploadError
 from alts.shared.uploaders.pulp import PulpLogsUploader
@@ -52,6 +55,7 @@ from alts.shared.utils.asyncssh import AsyncSSHClient, LongRunSSHClient
 from alts.shared.utils.git_utils import (
     clone_gerrit_repo,
     clone_git_repo,
+    fetch_git_commit,
     git_reset_hard,
     prepare_gerrit_command,
 )
@@ -65,6 +69,35 @@ from alts.worker.executors.ansible import AnsibleExecutor
 from alts.worker.executors.bats import BatsExecutor
 from alts.worker.executors.command import CommandExecutor
 from alts.worker.executors.shell import ShellExecutor
+from alts.worker.tmt import (
+    TEST_ARTIFACTS_DIR,
+    TMT_DISCOVER_DIR,
+    TMT_RUN_DIR,
+    TMT_SECTION_NAME,
+    TMT_STAGE_NAME,
+    TMT_TESTS_DIR,
+    DiscoveredTest,
+    TmtResult,
+    build_test_name_regex,
+    build_tmt_command,
+    build_tmt_context,
+    count_outcomes,
+    extract_step_errors,
+    find_internal_plans,
+    format_result_summary,
+    get_excluded_tests,
+    get_output_log,
+    get_tmt_test_key,
+    is_tmt_test_skipped,
+    make_result_keys,
+    parse_discovered_tests,
+    parse_exported_plans,
+    parse_os_release,
+    parse_results,
+    parse_step_status,
+    plan_name_regex,
+    read_output_tail,
+)
 
 __all__ = [
     'BaseRunner',
@@ -80,6 +113,7 @@ THIRD_PARTY_SECTION_NAME = 'third_party'
 TESTS_SECTIONS_NAMES = (
     TESTS_SECTION_NAME,
     THIRD_PARTY_SECTION_NAME,
+    TMT_SECTION_NAME,
 )
 TF_INIT_LOCK_PATH = '/tmp/tf_init_lock'
 BASE_SYSTEM_INFO_COMMANDS: Dict[str, Tuple[str, ...]] = {
@@ -117,6 +151,14 @@ DetectExecutorResult = Type[Optional[Union[
 def get_third_party_test_key(test_file_name: str) -> str:
     """Name of a third party test in the artifacts and in the result."""
     return f'{THIRD_PARTY_SECTION_NAME}_test_{test_file_name}'
+
+
+def get_log_file_base_name(name: str) -> str:
+    """
+    Log file name for an artifact: tmt test names contain '/' and may
+    contain other characters that don't belong into a file name.
+    """
+    return re.sub(r'[^A-Za-z0-9._+-]+', '_', name).strip('_') or 'log'
 
 
 def command_decorator(
@@ -228,9 +270,11 @@ class BaseRunner(object):
         test_flavor: Optional[Dict[str, str]] = None,
         vm_alive: bool = False,
         verbose: bool = False,
+        package_tests: Optional[dict] = None,
     ):
         # Environment ID and working directory preparation
         self._task_id = task_id
+        self._package_tests = package_tests or {}
         self._task_is_aborted = task_is_aborted
         self._test_configuration = test_configuration or {}
         self._test_flavor = test_flavor or {}
@@ -299,6 +343,8 @@ class BaseRunner(object):
         self._stats = {}
         self._verbose = verbose
         self._skipped_third_party_tests = []
+        self._skipped_tmt_tests = []
+        self._tmt_report = {}
         self.package_channel = package_channel
         self.vm_alive = vm_alive
 
@@ -312,6 +358,25 @@ class BaseRunner(object):
     @property
     def skipped_third_party_tests(self) -> List[str]:
         return self._skipped_third_party_tests
+
+    @property
+    def skipped_tmt_tests(self) -> List[str]:
+        return self._skipped_tmt_tests
+
+    @property
+    def tmt_report(self) -> Dict[str, Any]:
+        """tmt stage details for the result: context, plans, counts."""
+        return self._tmt_report
+
+    @property
+    def tmt_is_needed(self) -> bool:
+        """The task runs the tmt tests stage (a component test task)."""
+        return bool(self._package_tests.get('tmt'))
+
+    @property
+    def init_container(self) -> bool:
+        """The environment is a container with systemd as PID 1."""
+        return False
 
     @property
     def uploaded_logs(self) -> Dict[str, str]:
@@ -336,7 +401,8 @@ class BaseRunner(object):
 
     @property
     def pytest_is_needed(self) -> bool:
-        return self._test_env.get('pytest_is_needed', True)
+        # tmt tasks don't run the integrity tests
+        return self._test_env.get('pytest_is_needed', not self.tmt_is_needed)
 
     @property
     def use_deprecated_ansible(self) -> bool:
@@ -724,6 +790,9 @@ class BaseRunner(object):
         exception_class=StartEnvironmentError,
     )
     def start_env(self):
+        return self._start_env()
+
+    def _start_env(self):
         self._logger.info(
             'Starting the environment %s...',
             self.env_name,
@@ -761,6 +830,8 @@ class BaseRunner(object):
             'ignore_ansible_install_errors': (
                 CONFIG.ignore_ansible_install_errors
             ),
+            'tmt_is_needed': self.tmt_is_needed,
+            'init_container': self.init_container,
         }
         dist_major_version = self.dist_version[0]
         if self.dist_name in CONFIG.rhel_flavors and dist_major_version in ('6', '7'):
@@ -787,8 +858,11 @@ class BaseRunner(object):
             'Running "ansible-playbook %s" command',
             cmd_args_str,
         )
+        timeout = CONFIG.provision_timeout
+        if self.tmt_is_needed:
+            timeout = max(timeout, CONFIG.tmt_provision_timeout)
         exit_code, out, err = self.run_ansible_command(
-            cmd_args, timeout=CONFIG.provision_timeout
+            cmd_args, timeout=timeout
         )
         if exit_code == COMMAND_TIMEOUT_EXIT_CODE:
             return 1, '', f'Provision has timed out: {out}\n{err}'
@@ -1493,6 +1567,463 @@ class BaseRunner(object):
             return 1, '', '\n'.join(errors)
         return 0, 'Third-party tests have passed', ''
 
+    def copy_to_env(
+        self,
+        local_path: str,
+        remote_path: str,
+    ) -> Tuple[int, str, str]:
+        """Copies a file or a directory into the environment."""
+        raise NotImplementedError
+
+    def copy_from_env(
+        self,
+        remote_path: str,
+        local_path: str,
+    ) -> Tuple[int, str, str]:
+        """Copies a file or a directory from the environment."""
+        raise NotImplementedError
+
+    def is_env_running(self) -> bool:
+        return True
+
+    def _tmt_context_args(self, context: Dict[str, str]) -> List[str]:
+        args = []
+        for key, value in context.items():
+            args.extend(['-c', f'{key}={value}'])
+        return args
+
+    def _install_tmt_build_packages(
+        self,
+        packages: List[str],
+    ) -> Tuple[int, str, str]:
+        """
+        Puts the RPMs of the build into /var/share/test-artifacts and
+        installs them, as CentOS CI does: many upstream tests don't
+        require their package and expect it to be installed (ALTS-5).
+        """
+        self._logger.info('Installing the build packages for tmt tests')
+        self.exec_command('mkdir', '-p', TEST_ARTIFACTS_DIR)
+        exit_code, stdout, stderr = 1, '', ''
+        for attempt in range(1, 4):
+            exit_code, stdout, stderr = self.exec_command(
+                self.pkg_manager,
+                'download',
+                '--destdir',
+                TEST_ARTIFACTS_DIR,
+                *packages,
+            )
+            if exit_code == 0:
+                break
+            self._logger.warning(
+                'Attempt %d to download the build packages has failed',
+                attempt,
+            )
+            time.sleep(random.randint(5, 10))
+        if exit_code != 0:
+            return 1, stdout, (
+                f'Cannot download the build packages:\n{stdout}\n{stderr}'
+            )
+        lines = [f'Build packages are put into {TEST_ARTIFACTS_DIR}']
+        exit_code, stdout, stderr = self.exec_command(
+            'bash',
+            '-c',
+            f'{self.pkg_manager} -y install --skip-broken '
+            f'{TEST_ARTIFACTS_DIR}/*.rpm',
+        )
+        if exit_code != 0:
+            lines.append(
+                f'Not all build packages are installed:\n{stdout}\n{stderr}'
+            )
+        _, stdout, _ = self.exec_command('rpm', '-q', *packages)
+        installed = [
+            line.strip()
+            for line in stdout.splitlines()
+            if line.strip() and 'is not installed' not in line
+        ]
+        not_installed = [
+            line.strip()
+            for line in stdout.splitlines()
+            if 'is not installed' in line
+        ]
+        self._tmt_report['installed_packages'] = installed
+        lines.append('Installed build packages:')
+        lines.extend(f'  {package}' for package in installed)
+        if not_installed:
+            lines.append('Not installed:')
+            lines.extend(f'  {line}' for line in not_installed)
+        return 0, '\n'.join(lines), ''
+
+    def _get_tmt_internal_plans(
+        self,
+        workdir: str,
+        context_args: List[str],
+        plans: List[str],
+        log: List[str],
+    ) -> Dict[str, str]:
+        exit_code, stdout, stderr = self.exec_command(
+            'tmt',
+            *context_args,
+            'plans',
+            'export',
+            '--how',
+            'yaml',
+            *[plan_name_regex(plan) for plan in plans],
+            workdir=workdir,
+        )
+        exported = []
+        if exit_code == 0:
+            try:
+                exported = parse_exported_plans(stdout)
+            except Exception as e:
+                log.append(f'Cannot parse "tmt plans export": {e}')
+        else:
+            log.append(f'"tmt plans export" has failed:\n{stderr}')
+        return find_internal_plans(plans, exported)
+
+    def _discover_tmt_tests(
+        self,
+        workdir: str,
+        context_args: List[str],
+        plans: List[str],
+        test_filter: Optional[str],
+    ) -> Dict[str, List[DiscoveredTest]]:
+        """
+        Tests of the plans, named as in the results, with their discover
+        phase.
+        """
+        cmd = ['tmt', *context_args, 'run', '--id', TMT_DISCOVER_DIR,
+               'discover', 'plans']
+        for plan in plans:
+            cmd.extend(['--name', plan_name_regex(plan)])
+        if test_filter:
+            cmd.extend(['tests', '--filter', test_filter])
+        exit_code, _, stderr = self.exec_command(*cmd, workdir=workdir)
+        if exit_code != 0:
+            self._logger.warning('tmt discover has failed:\n%s', stderr)
+        discovered = {}
+        for plan in plans:
+            exit_code, stdout, _ = self.exec_command(
+                'cat',
+                f'{TMT_DISCOVER_DIR}{plan}/discover/tests.yaml',
+            )
+            if exit_code != 0:
+                continue
+            try:
+                discovered[plan] = parse_discovered_tests(stdout)
+            except Exception:
+                self._logger.exception('Cannot parse tests of %s', plan)
+        return discovered
+
+    def _add_skipped_tmt_test(self, key: str):
+        if key not in self._skipped_tmt_tests:
+            self._skipped_tmt_tests.append(key)
+
+    def _record_tmt_results(
+        self,
+        results: List[TmtResult],
+        skipped_tests: List[str],
+        local_run_dir: Path,
+        log: List[str],
+        filter_names: Optional[Dict[Tuple[str, str], str]] = None,
+    ):
+        """
+        filter_names: {(plan, name in the results): name without the
+        discover phase prefix} of the discovered tests.
+        """
+        section = self._artifacts.setdefault(TMT_SECTION_NAME, {})
+        filter_names = filter_names or {}
+        reported = []
+        for key, result in zip(make_result_keys(results), results):
+            if result.skipped:
+                self._add_skipped_tmt_test(key)
+                continue
+            if is_tmt_test_skipped(
+                result.name,
+                skipped_tests,
+                filter_names.get((result.plan, result.name)),
+            ):
+                # Not excluded from the run in advance: tmt discover
+                # has failed or has found other tests than the run
+                log.append(
+                    f'Test {result.name} is skipped but has run, '
+                    'its result is dropped'
+                )
+                self._add_skipped_tmt_test(key)
+                continue
+            output = ''
+            output_log = get_output_log(result)
+            if output_log:
+                output_path = Path(
+                    local_run_dir,
+                    result.plan.lstrip('/'),
+                    'execute',
+                    output_log,
+                )
+                if output_path.is_file():
+                    output = output_path.read_text(errors='replace')
+            summary = format_result_summary(result, read_output_tail(output))
+            section[key] = {
+                'exit_code': 0 if result.success else 1,
+                'stdout': format_result_summary(result) + '\n\n' + output,
+                'stderr': '',
+                'tmt': {
+                    'name': result.name,
+                    'plan': result.plan,
+                    'result': result.result,
+                    'duration': result.duration,
+                    'note': result.note,
+                    'summary': self.redact(summary),
+                },
+            }
+            reported.append(result)
+        return reported
+
+    def _run_tmt_tests(
+        self,
+        package_tests: PackageTests,
+        skipped_tests: List[str],
+    ) -> Tuple[int, str, str]:
+        tmt_config = package_tests.tmt
+        report = self._tmt_report
+        report.update({
+            'url': package_tests.url,
+            'commit': package_tests.commit,
+        })
+        log = [f'Tests: {package_tests.url} at {package_tests.commit}']
+        if not tmt_config or not tmt_config.plans:
+            log.append('No tmt plans to run')
+            return 0, '\n'.join(log), ''
+
+        repo_path, error = fetch_git_commit(
+            package_tests.url,
+            package_tests.commit,
+            Path(self._work_dir, 'tmt_tests'),
+            self._logger,
+        )
+        if not repo_path:
+            return 1, '\n'.join(log), error
+        remote_src = f'{TMT_TESTS_DIR}/{repo_path.name}'
+        self.exec_command('mkdir', '-p', TMT_TESTS_DIR)
+        exit_code, _, stderr = self.copy_to_env(str(repo_path), remote_src)
+        if exit_code != 0:
+            return 1, '\n'.join(log), (
+                f'Cannot copy the tests into the environment:\n{stderr}'
+            )
+
+        if package_tests.packages:
+            exit_code, stdout, stderr = self._install_tmt_build_packages(
+                package_tests.packages,
+            )
+            log.append(stdout)
+            if exit_code != 0:
+                return 1, '\n'.join(log), stderr
+
+        _, os_release, _ = self.exec_command('cat', '/etc/os-release')
+        context, ignored_keys = build_tmt_context(
+            parse_os_release(os_release),
+            self.dist_version,
+            self.dist_arch,
+            tmt_config.context,
+        )
+        report['context'] = context
+        context_args = self._tmt_context_args(context)
+        log.append(
+            'tmt context: '
+            + ' '.join(f'{key}={value}' for key, value in context.items())
+        )
+        if ignored_keys:
+            log.append(
+                'Context set by ALTS, ignored in the request: '
+                + ', '.join(ignored_keys)
+            )
+
+        internal_plans = self._get_tmt_internal_plans(
+            remote_src,
+            context_args,
+            tmt_config.plans,
+            log,
+        )
+        report['excluded_plans'] = [
+            {'name': plan, 'reason': reason}
+            for plan, reason in internal_plans.items()
+        ]
+        for plan, reason in internal_plans.items():
+            log.append(f'Plan {plan} is not run: {reason}')
+        plans = [plan for plan in tmt_config.plans if plan not in internal_plans]
+        if not plans:
+            log.append('No tmt plans to run')
+            return 0, '\n'.join(log), ''
+
+        test_name_regex = build_test_name_regex(skipped_tests)
+        filter_names = {}
+        if test_name_regex:
+            # A skip rule may name a test with the discover phase prefix
+            # of the results, "tests --name" sees the name without it:
+            # the discovered tests give both names
+            discovered = self._discover_tmt_tests(
+                remote_src,
+                context_args,
+                plans,
+                tmt_config.filter,
+            )
+            discovered_tests = [
+                test for tests in discovered.values() for test in tests
+            ]
+            if not discovered_tests:
+                log.append(
+                    'tmt discover has found no tests, the skip rules with '
+                    'the discover phase prefix are applied to the results only'
+                )
+            filter_names = {
+                (plan, test.name): test.filter_name
+                for plan, tests in discovered.items()
+                for test in tests
+            }
+            test_name_regex = build_test_name_regex(
+                skipped_tests,
+                discovered_tests,
+            )
+            for test in get_excluded_tests(discovered_tests, test_name_regex):
+                self._add_skipped_tmt_test(get_tmt_test_key(test.name))
+            if self._skipped_tmt_tests:
+                log.append('Skipped tests:')
+                log.extend(f'  {key}' for key in self._skipped_tmt_tests)
+
+        _, tmt_help, tmt_help_err = self.exec_command('tmt', '--help')
+        cmd = build_tmt_command(
+            plans,
+            context,
+            environment=tmt_config.environment,
+            test_filter=tmt_config.filter,
+            test_name_regex=test_name_regex,
+            feeling_safe='--feeling-safe' in tmt_help + tmt_help_err,
+            timeout=CONFIG.tmt_exec_timeout,
+        )
+        log.append(f'Command: {" ".join(shlex.quote(arg) for arg in cmd)}')
+        self._logger.info('Running tmt tests on %s', self.env_name)
+        try:
+            tmt_exit_code, tmt_stdout, tmt_stderr = self.exec_command(
+                *cmd,
+                workdir=remote_src,
+                timeout=CONFIG.tmt_exec_timeout + 300,
+            )
+        except ProcessTimedOut:
+            tmt_exit_code, tmt_stdout, tmt_stderr = (
+                COMMAND_TIMEOUT_EXIT_CODE, '', 'tmt has timed out',
+            )
+        report['tmt_exit_code'] = tmt_exit_code
+        log.append(f'tmt exit code: {tmt_exit_code}')
+        if not self.is_env_running():
+            log.append(
+                'The environment has stopped during the tmt run, '
+                'probably a test rebooted it'
+            )
+
+        local_run_dir = Path(self._work_dir, 'tmt_run')
+        exit_code, _, stderr = self.copy_from_env(
+            TMT_RUN_DIR,
+            str(local_run_dir),
+        )
+        if exit_code != 0:
+            log.append(f'Cannot copy the tmt run directory:\n{stderr}')
+        results = []
+        plans_report = []
+        missing_plans = []
+        failed_discover = []
+        tmt_output = f'{tmt_stdout}\n{tmt_stderr}'
+        for plan in plans:
+            plan_dir = Path(local_run_dir, plan.lstrip('/'))
+            # The discover step of a plan is "done" only once it has
+            # found the tests; when it fails (a repository of a discover
+            # phase can't be cloned, ...) tmt still writes an empty
+            # results.yaml and exits with 2, like for a test with an
+            # error outcome, so neither of them tells it
+            discover_step = Path(plan_dir, 'discover', 'step.yaml')
+            discover_status = (
+                parse_step_status(discover_step.read_text())
+                if discover_step.is_file()
+                else None
+            )
+            if discover_status is not None and discover_status != 'done':
+                errors = extract_step_errors(tmt_output, plan, 'discover')
+                failed_discover.append(plan)
+                plans_report.append({
+                    'name': plan,
+                    'error': 'discover failed'
+                    + (f': {errors[0]}' if errors else ''),
+                })
+                log.append(f'tmt discover has failed in the plan {plan}:')
+                log.extend(
+                    f'  {error}' for error in errors or ['see the tmt output']
+                )
+                continue
+            results_file = Path(plan_dir, 'execute', 'results.yaml')
+            if not results_file.is_file():
+                missing_plans.append(plan)
+                plans_report.append({'name': plan, 'error': 'no results'})
+                continue
+            plan_results = parse_results(results_file.read_text(), plan)
+            results.extend(plan_results)
+            plans_report.append({
+                'name': plan,
+                'counts': count_outcomes(plan_results),
+            })
+        reported = self._record_tmt_results(
+            results,
+            skipped_tests,
+            local_run_dir,
+            log,
+            filter_names,
+        )
+        report['plans'] = plans_report
+        report['counts'] = count_outcomes(reported)
+        log.append('Results:')
+        for plan_report in plans_report:
+            log.append(
+                f'  {plan_report["name"]}: '
+                + str(plan_report.get('counts') or plan_report.get('error'))
+            )
+        log.extend(['', 'tmt output:', tmt_stdout, tmt_stderr])
+        errors = []
+        if failed_discover:
+            errors.append(
+                'tmt discover has failed in the plans: '
+                + ', '.join(failed_discover)
+            )
+        if missing_plans:
+            errors.append(
+                'tmt has not run the plans: ' + ', '.join(missing_plans)
+            )
+        if errors:
+            return 1, '\n'.join(log), '\n'.join(errors)
+        return 0, '\n'.join(log), ''
+
+    @command_decorator(
+        TMT_STAGE_NAME,
+        'tmt tests stage has failed',
+        exception_class=TmtTestsError,
+    )
+    def run_tmt_tests(
+        self,
+        package_tests: Union[dict, PackageTests],
+        skipped_tests: Optional[List[str]] = None,
+    ):
+        """
+        Runs the tmt plans of tests/<pkg> (ALTS-5). A failed tmt test
+        doesn't fail the stage, it's reported in the "tmt" section;
+        the stage fails only if it is broken itself: the tests can't be
+        fetched, a plan has no results.
+        """
+        if isinstance(package_tests, dict):
+            package_tests = PackageTests(**package_tests)
+        try:
+            return self._run_tmt_tests(package_tests, skipped_tests or [])
+        except SoftTimeLimitExceeded:
+            raise
+        except Exception:
+            self._logger.exception('tmt tests stage has failed')
+            return 1, '', traceback.format_exc()
+
     def publish_artifacts_to_storage(self):
         # Should upload artifacts from artifacts directory to preferred
         # artifacts storage (S3, Minio, etc.)
@@ -1509,7 +2040,7 @@ class BaseRunner(object):
         def write_to_file(file_base_name: str, artifacts_section: dict):
             log_file_path = os.path.join(
                 self._artifacts_dir,
-                f'{file_base_name}_{self._task_id}.log',
+                f'{get_log_file_base_name(file_base_name)}_{self._task_id}.log',
             )
             with open(log_file_path, 'wb') as fd:
                 stdout_ = replace_host_name(artifacts_section["stdout"])
@@ -1714,6 +2245,7 @@ class GenericVMRunner(BaseRunner):
         test_flavor: Optional[Dict[str, str]] = None,
         vm_alive: bool = False,
         verbose: bool = False,
+        package_tests: Optional[dict] = None,
     ):
         super().__init__(
             task_id,
@@ -1727,6 +2259,7 @@ class GenericVMRunner(BaseRunner):
             test_configuration=test_configuration,
             test_flavor=test_flavor,
             verbose=verbose,
+            package_tests=package_tests,
         )
         self._tests_dir = CONFIG.tests_base_dir
         self._ssh_client: Optional[Union[AsyncSSHClient, LongRunSSHClient]] = None

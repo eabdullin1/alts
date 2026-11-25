@@ -51,6 +51,7 @@ class OpennebulaRunner(GenericVMRunner):
         test_flavor: Optional[Dict[str, str]] = None,
         vm_alive: bool = False,
         verbose: bool = False,
+        package_tests: Optional[dict] = None,
     ):
         super().__init__(
             task_id,
@@ -65,6 +66,7 @@ class OpennebulaRunner(GenericVMRunner):
             test_flavor=test_flavor,
             vm_alive=vm_alive,
             verbose=verbose,
+            package_tests=package_tests,
         )
         user = CONFIG.opennebula_config.username
         password = CONFIG.opennebula_config.password

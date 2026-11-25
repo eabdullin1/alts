@@ -1,0 +1,13 @@
+# Synthetic plans of the live check, plus an internal plan ALTS must not run
+commit: e2e0111111111111111111111111111111111111
+plans:
+  - /plans/e2e/gating
+  - /plans/e2e/info
+  - /plans/e2e/internal
+plans_export:
+  - name: /plans/e2e/gating
+    discover: {how: fmf, test: ['^/e2e/(pass|fail|skipme)$']}
+  - name: /plans/e2e/info
+    discover: {how: fmf, test: ['^/e2e/(pass|warn|skipped-by-tmt)$']}
+  - name: /plans/e2e/internal
+    discover: {how: fmf, url: 'https://gitlab.com/redhat/rhel/tests/grep'}

@@ -1,0 +1,20 @@
+
+Task ID: 71e66341-4dfd-42e7-9dbb-5c4323abd207
+Time: 2026-11-24T20:56:43.294477
+Exit code: 0
+Stdout:
+
+Tests: https://git.example.org/tests/grep.git at 6d5e624ec018c2f993e6f66fec8a6d0d90ff66fd
+Build packages are put into /var/share/test-artifacts
+Installed build packages:
+  grep-3.6-5.el9.x86_64
+tmt context: distro=almalinux-9.9,centos-stream-9,rhel-9.9 arch=x86_64 initiator=albs component=grep
+Skipped tests:
+  tmt_test_/e2e/skipme
+Command: timeout --kill-after=60 5400 tmt --feeling-safe -c distro=almalinux-9.9,centos-stream-9,rhel-9.9 -c arch=x86_64 -c initiator=albs -c component=grep run --id /var/tmp/tmt/run -e PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --all provision --how local plans --name '^/plans/e2e/gating$' --name '^/plans/e2e/info$' tests --name '^(?!(?:/e2e/skipme)$)'
+tmt exit code: 1
+Results:
+  /plans/e2e/gating: {'pass': 1}
+  /plans/e2e/info: {'fail': 1}
+
+tmt output:

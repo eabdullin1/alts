@@ -1,8 +1,9 @@
+import shutil
 from logging import Logger
 from pathlib import Path
 from random import randint
 from time import sleep
-from typing import Optional
+from typing import Optional, Tuple
 
 from plumbum import local
 
@@ -143,3 +144,61 @@ def clone_gerrit_repo(
             )
             return
     return git_repo_path
+
+
+def fetch_git_commit(
+    repo_url: str,
+    commit: str,
+    work_dir: Path,
+    logger: Logger,
+    cmd_timeout: int = 300,
+) -> Tuple[Optional[Path], str]:
+    """
+    Gets exactly the given commit of the repository into
+    work_dir/<repository name> and checks it out.
+
+    "git clone --depth 1" can't get an arbitrary commit, so the commit is
+    fetched by its hash, and if the server doesn't allow it, all the
+    branches are fetched. There is no fallback to another commit: tests
+    of another commit would be reported as the tests of this one.
+
+    Returns the repository path, or None and the error.
+    """
+    git_repo_path = Path(work_dir, Path(repo_url).name)
+    if git_repo_path.name.endswith('.git'):
+        git_repo_path = git_repo_path.with_name(git_repo_path.name[:-4])
+    if git_repo_path.exists():
+        shutil.rmtree(git_repo_path)
+    git_repo_path.mkdir(parents=True)
+    git = local['git'].with_cwd(git_repo_path)
+
+    def run(*args) -> Tuple[int, str, str]:
+        return git.run(args, retcode=None, timeout=cmd_timeout)
+
+    errors = []
+    for args in (('init', '-q'), ('remote', 'add', 'origin', repo_url)):
+        exit_code, _, stderr = run(*args)
+        if exit_code != 0:
+            return None, f'git {" ".join(args)} failed:\n{stderr}'
+    logger.debug('Fetching %s of %s', commit, repo_url)
+    exit_code, _, stderr = run('fetch', '-q', '--depth', '1', 'origin', commit)
+    if exit_code != 0:
+        errors.append(stderr)
+        logger.debug('Cannot fetch the commit by hash, fetching branches')
+        exit_code, _, stderr = run('fetch', '-q', 'origin')
+        if exit_code != 0:
+            errors.append(stderr)
+            return None, (
+                f'Cannot fetch {repo_url}:\n' + '\n'.join(errors)
+            )
+    exit_code, _, stderr = run('checkout', '-q', '--detach', commit)
+    if exit_code != 0:
+        errors.append(stderr)
+        return None, (
+            f'Commit {commit} is not in {repo_url}:\n' + '\n'.join(errors)
+        )
+    exit_code, stdout, stderr = run('rev-parse', 'HEAD')
+    head = stdout.strip()
+    if exit_code != 0 or head != commit:
+        return None, f'Checked out {head or stderr} instead of {commit}'
+    return git_repo_path, ''

@@ -1,0 +1,551 @@
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:09.618682+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:09.618605+00:00'
+  context:
+    arch: &id001
+    - x86_64
+    component: &id002
+    - grep
+    distro: &id003
+    - almalinux-9.9
+    - centos-stream-9
+    - rhel-9.9
+    initiator: &id004
+    - albs
+  data-path: data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data
+  duration: 00:00:09
+  end-time: '2026-11-24T20:47:09.617839+00:00'
+  fmf-id:
+    name: /Performance/bz587635-Speed-in-Unicode
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061926
+    extra-task: /CoreOS/grep/Performance/bz587635-Speed-in-Unicode
+    id: f6ba458b-3ed4-4a8f-b4d0-654a056208c3
+  log:
+  - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/output.txt
+  - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/journal.txt
+  - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/failures.yaml
+  - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/journal.xml
+  name: /Performance/bz587635-Speed-in-Unicode
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 1
+  start-time: '2026-11-24T20:47:00.019909+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:01.112574+00:00'
+    log:
+    - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:09.306455+00:00'
+    log:
+    - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:09.416839+00:00'
+    log:
+    - data/guest/default-0/Performance/bz587635-Speed-in-Unicode-1/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Performance/bz587635-Speed-in-Unicode/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:10.974915+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:10.974864+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/grep-E-UTF-8-match-2/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:10.974165+00:00'
+  fmf-id:
+    name: /Regression/grep-E-UTF-8-match
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0061922
+    extra-task: /CoreOS/grep/Regression/grep-E-UTF-8-match
+    id: 2cc3f3ef-e4c2-4484-9013-a0ee4161dfa1
+  log:
+  - data/guest/default-0/Regression/grep-E-UTF-8-match-2/output.txt
+  - data/guest/default-0/Regression/grep-E-UTF-8-match-2/journal.txt
+  - data/guest/default-0/Regression/grep-E-UTF-8-match-2/failures.yaml
+  - data/guest/default-0/Regression/grep-E-UTF-8-match-2/journal.xml
+  name: /Regression/grep-E-UTF-8-match
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 2
+  start-time: '2026-11-24T20:47:09.653373+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:10.653715+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:10.754398+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-E-UTF-8-match-2/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/grep-E-UTF-8-match/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:12.579373+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:12.579320+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/grep-w-3/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:12.578660+00:00'
+  fmf-id:
+    name: /Regression/grep-w
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0139328
+    extra-task: /CoreOS/grep/Regression/grep-w
+    id: 21d81eb0-4b65-4a99-9c5f-1503fe19e9f9
+  log:
+  - data/guest/default-0/Regression/grep-w-3/output.txt
+  - data/guest/default-0/Regression/grep-w-3/journal.txt
+  - data/guest/default-0/Regression/grep-w-3/failures.yaml
+  - data/guest/default-0/Regression/grep-w-3/journal.xml
+  name: /Regression/grep-w
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 3
+  start-time: '2026-11-24T20:47:11.006420+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:12.155822+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-w-3/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:12.261284+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-w-3/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:12.365156+00:00'
+    log:
+    - data/guest/default-0/Regression/grep-w-3/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/grep-w/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:16.141704+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:16.141651+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data
+  duration: 00:00:03
+  end-time: '2026-11-24T20:47:16.140931+00:00'
+  fmf-id:
+    name: /Regression/slow-grep-v-f-between-two-files
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0461633
+    extra-task: /CoreOS/grep/Regression/slow-grep-v-f-between-two-files
+    id: 24867850-a598-4e8a-b819-29247c8557f8
+  log:
+  - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/output.txt
+  - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/journal.txt
+  - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/failures.yaml
+  - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/journal.xml
+  name: /Regression/slow-grep-v-f-between-two-files
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 4
+  start-time: '2026-11-24T20:47:12.613534+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:13.708642+00:00'
+    log:
+    - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:15.813266+00:00'
+    log:
+    - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:15.919491+00:00'
+    log:
+    - data/guest/default-0/Regression/slow-grep-v-f-between-two-files-4/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/slow-grep-v-f-between-two-files/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:17.651506+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:17.651428+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:17.650407+00:00'
+  fmf-id:
+    name: /Regression/word-boundary-error-near-an-utf8-character
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0461632
+    extra-task: /CoreOS/grep/Regression/word-boundary-error-near-an-utf8-character
+    id: 19193f17-f92f-45f0-a774-21b57b6518d6
+  log:
+  - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/output.txt
+  - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/journal.txt
+  - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/failures.yaml
+  - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/journal.xml
+  name: /Regression/word-boundary-error-near-an-utf8-character
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 5
+  start-time: '2026-11-24T20:47:16.177089+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:17.250414+00:00'
+    log:
+    - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:17.340416+00:00'
+    log:
+    - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:17.446724+00:00'
+    log:
+    - data/guest/default-0/Regression/word-boundary-error-near-an-utf8-character-5/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Regression/word-boundary-error-near-an-utf8-character/main.fmf
+- __class__:
+    module: tmt.result
+    name: Result
+  check:
+  - __class__:
+      module: tmt.result
+      name: CheckResult
+    duration: 00:00:00
+    end-time: '2026-11-24T20:47:19.369523+00:00'
+    event: after-test
+    log: []
+    name: avc
+    note:
+    - The detection of AVC denials was skipped because the guest was not compatible.
+    - SELinux not detected on the guest.
+    original-result: skip
+    result: skip
+    start-time: '2026-11-24T20:47:19.369468+00:00'
+  context:
+    arch: *id001
+    component: *id002
+    distro: *id003
+    initiator: *id004
+  data-path: data/guest/default-0/Sanity/smoke-test-6/data
+  duration: 00:00:01
+  end-time: '2026-11-24T20:47:19.368778+00:00'
+  fmf-id:
+    name: /Sanity/smoke-test
+    ref: 1531e510fe5f35bef344c637fefced85038c69f7
+    url: https://git.almalinux.org/tests/grep.git
+  guest:
+    __class__:
+      module: tmt.result
+      name: ResultGuestData
+    name: default-0
+    primary-address: localhost
+    role: null
+  ids:
+    extra-nitrate: TC#0598803
+    extra-task: /CoreOS/grep/Sanity/smoke-test
+    id: 90d78f91-3088-4d3c-a5e5-d98cf2e524b0
+  log:
+  - data/guest/default-0/Sanity/smoke-test-6/output.txt
+  - data/guest/default-0/Sanity/smoke-test-6/journal.txt
+  - data/guest/default-0/Sanity/smoke-test-6/failures.yaml
+  - data/guest/default-0/Sanity/smoke-test-6/journal.xml
+  name: /Sanity/smoke-test
+  note: []
+  original-result: pass
+  result: pass
+  serial-number: 6
+  start-time: '2026-11-24T20:47:17.696555+00:00'
+  subresult:
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:18.844095+00:00'
+    log:
+    - data/guest/default-0/Sanity/smoke-test-6/data/Setup/output.txt
+    name: /Setup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:19.036628+00:00'
+    log:
+    - data/guest/default-0/Sanity/smoke-test-6/data/Test/output.txt
+    name: /Test
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  - __class__:
+      module: tmt.result
+      name: SubResult
+    check: []
+    duration: null
+    end-time: '2026-11-24T20:47:19.168399+00:00'
+    log:
+    - data/guest/default-0/Sanity/smoke-test-6/data/Cleanup/output.txt
+    name: /Cleanup
+    note: []
+    original-result: pass
+    result: pass
+    start-time: null
+  web-link: https://git.almalinux.org/tests/grep.git/Sanity/smoke-test/main.fmf

@@ -1,0 +1,127 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:48:01 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:01 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:01 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:01 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:48:01 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:01 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.XbOpbaGWlz'
+/tmp/tmp.XbOpbaGWlz /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/inconsistent-w-and-alnum-behaviour
+:: [ 20:48:01 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.XbOpbaGWlz' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.T28LZSxYKa into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [  BEGIN   ] :: Running 'echo 'á' | grep '\w' | grep 'á''
+:: [ 20:48:01 ] :: [   FAIL   ] :: Command 'echo 'á' | grep '\w' | grep 'á'' (Expected 0, got 1)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 0 good, 1 bad
+::   RESULT: FAIL (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.VeAs0PyNIR into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/inconsistent-w-and-alnum-behaviour
+:: [ 20:48:01 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:01 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.XbOpbaGWlz'
+:: [ 20:48:01 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.jkD0wnuA96 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 18
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/inconsistent-w-and-alnum-behaviour
+    Test started  : 2026-11-24 20:48:00 UTC
+    Test finished : 2026-11-24 20:48:01 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:01 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:01 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:01 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:01 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.XbOpbaGWlz' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [   FAIL   ] :: Command 'echo 'á' | grep '\w' | grep 'á'' (Expected 0, got 1)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 0 good, 1 bad
+::   RESULT: FAIL (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:01 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/inconsistent-w-and-alnum-behaviour
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:01 ] :: [   LOG    ] :: Phases fingerprint:  tIGqJLIX
+:: [ 20:48:01 ] :: [   LOG    ] :: Asserts fingerprint: 2CRjP4hE
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/inconsistent-w-and-alnum-behaviour-18'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 2 good, 1 bad
+::   OVERALL RESULT: FAIL (/Regression/inconsistent-w-and-alnum-behaviour)
+

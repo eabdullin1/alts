@@ -5,6 +5,7 @@
 """AlmaLinux Test System docker environment runner."""
 
 import os
+import re
 from pathlib import Path
 from typing import (
     Callable,
@@ -34,7 +35,30 @@ from alts.worker.runners.base import (
     command_decorator,
 )
 
-__all__ = ['DockerRunner']
+__all__ = ['DockerImageNotConfigured', 'DockerRunner']
+
+# writable-cgroups appeared in Docker 28.0.0 (moby PR #48828)
+INIT_CONTAINER_MIN_DOCKER_VERSION = (28, 0)
+CGROUP_V2_CONTROLLERS_FILE = '/sys/fs/cgroup/cgroup.controllers'
+IMAGE_PULL_TIMEOUT = 1800  # 30 minutes in seconds
+# "linux/386", "linux/amd64/v2", like ARCH_PLATFORM_MAPPING
+IMAGE_PLATFORM_FORMAT = (
+    '{{.Os}}/{{.Architecture}}{{with .Variant}}/{{.}}{{end}}'
+)
+
+
+def same_platform(first: str, second: str) -> bool:
+    """linux/arm64 is linux/arm64/v8, images often omit the variant."""
+    def normalize(platform: str) -> str:
+        return platform[:-len('/v8')] if platform.endswith(
+            'arm64/v8'
+        ) else platform
+
+    return normalize(first) == normalize(second)
+
+
+class DockerImageNotConfigured(ValueError):
+    """The worker config has no image for the platform of the task."""
 
 
 ARCH_PLATFORM_MAPPING = {
@@ -73,6 +97,7 @@ class DockerRunner(BaseRunner):
         artifacts_uploader: Optional[BaseLogsUploader] = None,
         package_channel: Optional[str] = None,
         verbose: bool = False,
+        package_tests: Optional[dict] = None,
     ):
         """
         Docker environment class initialization.
@@ -103,8 +128,62 @@ class DockerRunner(BaseRunner):
             artifacts_uploader=artifacts_uploader,
             package_channel=package_channel,
             verbose=verbose,
+            package_tests=package_tests,
         )
         self._ansible_connection_type = 'docker'
+        self._docker_image: Optional[str] = None
+
+    def get_docker_image_keys(self) -> List[str]:
+        """
+        Keys of docker_images in the config for the task, the first
+        found wins: with the architecture, then without it; the full
+        distribution version, then its major part.
+        """
+        versions = [self.dist_version]
+        major_version = self.dist_version.split('.')[0]
+        if major_version != self.dist_version:
+            versions.append(major_version)
+        keys = [
+            f'{self.dist_name}-{version}-{self.dist_arch}'
+            for version in versions
+        ]
+        keys.extend(f'{self.dist_name}-{version}' for version in versions)
+        return keys
+
+    @property
+    def docker_image(self) -> str:
+        """
+        The init image of the task from docker_images of the config, the
+        only source of the images. Raises DockerImageNotConfigured if the
+        platform isn't there.
+        """
+        if self._docker_image:
+            return self._docker_image
+        keys = self.get_docker_image_keys()
+        image = next(
+            (
+                CONFIG.docker_images[key]
+                for key in keys
+                if key in CONFIG.docker_images
+            ),
+            None,
+        )
+        if not image:
+            raise DockerImageNotConfigured(
+                f'There is no docker image for {self.dist_name} '
+                f'{self.dist_version} {self.dist_arch} in docker_images '
+                f'of the worker config, looked for: {", ".join(keys)}'
+            )
+        self._docker_image = image
+        return image
+
+    @property
+    def init_container(self) -> bool:
+        """
+        Docker environments always run in init images with systemd as
+        PID 1 (D-21, ALTS-11).
+        """
+        return True
 
     def _render_tf_main_file(self):
         """
@@ -118,7 +197,7 @@ class DockerRunner(BaseRunner):
         """
         docker_tf_file = os.path.join(self._work_dir, self.TF_MAIN_FILE)
         image_platform = ARCH_PLATFORM_MAPPING.get(self.dist_arch)
-        image_name = self._get_image_name(image_platform)
+        image_name = self.docker_image
         external_network = os.environ.get('EXTERNAL_NETWORK', None)
         http_proxy = os.environ.get('http_proxy', None)
         https_proxy = os.environ.get('https_proxy', None)
@@ -137,25 +216,90 @@ class DockerRunner(BaseRunner):
             no_proxy=no_proxy,
         )
 
-    def _get_image_name(self, image_platform: Optional[str]) -> str:
+    @staticmethod
+    def get_docker_server_version() -> Tuple[int, str]:
+        exit_code, stdout, _ = local['docker'].run(
+            ['version', '--format', '{{.Server.Version}}'],
+            retcode=None,
+        )
+        return exit_code, stdout.strip()
+
+    @staticmethod
+    def parse_docker_version(version: str) -> Optional[Tuple[int, int]]:
+        match = re.match(r'(\d+)\.(\d+)', version)
+        if not match:
+            return None
+        return int(match.group(1)), int(match.group(2))
+
+    def check_init_container_support(self) -> Optional[str]:
         """
-        Returns Docker image name, applying the first matching
-        override from the config.
+        An init container needs cgroup v2 on the worker and Docker
+        >= 28.0.0 with --security-opt writable-cgroups (ALTS-16).
+        Returns the error or None.
         """
-        image = self.dist_name
-        major_version = self.dist_version.split('.')[0]
-        for override in CONFIG.docker_image_overrides:
-            if (
-                override.dist_name == self.dist_name
-                and override.platform == image_platform
-                and (
-                    self.dist_version in override.dist_versions
-                    or major_version in override.dist_versions
-                )
-            ):
-                image = override.image
-                break
-        return f'{image}:{self.dist_version}'
+        if not os.path.exists(CGROUP_V2_CONTROLLERS_FILE):
+            return (
+                'Init containers need cgroup v2 on the worker: '
+                f'{CGROUP_V2_CONTROLLERS_FILE} does not exist, '
+                '/sys/fs/cgroup is not cgroup2fs'
+            )
+        exit_code, version = self.get_docker_server_version()
+        parsed = self.parse_docker_version(version)
+        if exit_code != 0 or not parsed:
+            return f'Cannot get the Docker server version: {version}'
+        if parsed < INIT_CONTAINER_MIN_DOCKER_VERSION:
+            required = '.'.join(map(str, INIT_CONTAINER_MIN_DOCKER_VERSION))
+            return (
+                f'Init containers need Docker >= {required} on the worker '
+                f'(--security-opt writable-cgroups), it is {version}'
+            )
+        return None
+
+    @staticmethod
+    def run_docker(
+        *args: str,
+        timeout: Optional[int] = None,
+    ) -> Tuple[int, str, str]:
+        return local['docker'].run(args=args, retcode=None, timeout=timeout)
+
+    def ensure_image_platform(self) -> Optional[str]:
+        """
+        Pulls the image for the platform of the task unless the worker
+        has it. x86_64 and i686 tasks share the tags of the init images
+        (one tag, several platforms), and the docker_image resource of
+        Terraform pulls only an image the worker doesn't have by name,
+        whatever platforms it has, so an i686 task could find only the
+        x86_64 image of the tag. "docker image inspect --platform" needs
+        Docker 28.1; with older Docker the image is always pulled.
+        Returns the error or None.
+        """
+        platform = ARCH_PLATFORM_MAPPING.get(self.dist_arch)
+        if not platform:
+            return None
+        image = self.docker_image
+        exit_code, stdout, _ = self.run_docker(
+            'image', 'inspect', '--platform', platform,
+            '--format', IMAGE_PLATFORM_FORMAT, image,
+        )
+        if exit_code == 0 and same_platform(stdout.strip(), platform):
+            return None
+        self._logger.info('Pulling %s for %s', image, platform)
+        exit_code, stdout, stderr = self.run_docker(
+            'pull', '--platform', platform, image,
+            timeout=IMAGE_PULL_TIMEOUT,
+        )
+        if exit_code != 0:
+            return f'Cannot pull {image} for {platform}: {stderr or stdout}'
+        return None
+
+    def _start_env(self):
+        error = self.check_init_container_support()
+        if not error:
+            error = self.ensure_image_platform()
+        if error:
+            self._logger.error(error)
+            return 1, '', error
+        return super()._start_env()
 
     def _render_tf_variables_file(self):
         pass
@@ -164,6 +308,7 @@ class DockerRunner(BaseRunner):
         self,
         *args,
         workdir: Optional[str] = None,
+        timeout: Optional[int] = None,
     ) -> Tuple[int, str, str]:
         """
         Executes a command inside docker container.
@@ -192,7 +337,36 @@ class DockerRunner(BaseRunner):
         return local['docker'].with_cwd(self._work_dir).run(
             args=tuple(cmd),
             retcode=None,
+            timeout=timeout,
         )
+
+    def copy_to_env(
+        self,
+        local_path: str,
+        remote_path: str,
+    ) -> Tuple[int, str, str]:
+        return local['docker'].run(
+            ['cp', local_path, f'{self.env_name}:{remote_path}'],
+            retcode=None,
+        )
+
+    def copy_from_env(
+        self,
+        remote_path: str,
+        local_path: str,
+    ) -> Tuple[int, str, str]:
+        # docker cp works with a stopped container too
+        return local['docker'].run(
+            ['cp', f'{self.env_name}:{remote_path}', local_path],
+            retcode=None,
+        )
+
+    def is_env_running(self) -> bool:
+        exit_code, stdout, _ = local['docker'].run(
+            ['inspect', '--format', '{{.State.Running}}', str(self.env_name)],
+            retcode=None,
+        )
+        return exit_code == 0 and stdout.strip() == 'true'
 
     @staticmethod
     def copy(copy_args: List[str]):

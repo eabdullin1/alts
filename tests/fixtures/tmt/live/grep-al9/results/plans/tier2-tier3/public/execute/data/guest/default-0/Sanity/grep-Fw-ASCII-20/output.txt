@@ -1,0 +1,136 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:48:04 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:04 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:04 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:04 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:48:04 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:04 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.fL45mgBLj7'
+/tmp/tmp.fL45mgBLj7 /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Sanity/grep-Fw-ASCII
+:: [ 20:48:04 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.fL45mgBLj7' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.wbi7ktvKZn into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in C for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US.UTF-8 for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in C for input x word x 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US for input x word x 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US.UTF-8 for input x word x 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.PPNTljCECZ into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Sanity/grep-Fw-ASCII
+:: [ 20:48:04 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:04 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.fL45mgBLj7'
+:: [ 20:48:04 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.caW80V0NMs into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 20
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Sanity/grep-Fw-ASCII
+    Test started  : 2026-11-24 20:48:03 UTC
+    Test finished : 2026-11-24 20:48:04 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:04 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:04 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:04 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:04 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.fL45mgBLj7' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in C for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US.UTF-8 for input word 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in C for input x word x 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US for input x word x 
+:: [ 20:48:04 ] :: [   PASS   ] :: Correct output in en_US.UTF-8 for input x word x 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 6 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:04 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Sanity/grep-Fw-ASCII
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:04 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:48:04 ] :: [   LOG    ] :: Asserts fingerprint: jn0ChV+x
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Sanity/grep-Fw-ASCII-20'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Sanity/grep-Fw-ASCII)
+

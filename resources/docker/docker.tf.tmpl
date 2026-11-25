@@ -6,7 +6,21 @@ resource "docker_container" "${container_name}" {
   image = docker_image.${dist_name}.image_id
   name = "${container_name}"
   must_run = true
-  command = ["sleep", "21600"]
+% if image_platform:
+  # The image of a tag serves several platforms (x86_64 and i686 tasks
+  # share almalinux/<ver>-init), so the container must ask for its own:
+  # without it Docker takes the host platform once its content is local
+  platform = "${image_platform}"
+% endif
+  # systemd is PID 1 (the CMD of the init image), D-21: the container
+  # gets its own writable cgroup subtree, no --privileged, no host
+  # cgroup tree
+  cgroupns_mode = "private"
+  security_opts = ["writable-cgroups=true"]
+  tmpfs = {
+    "/run" = ""
+    "/run/lock" = ""
+  }
   env = [
 % if http_proxy:
     "http_proxy=${http_proxy}",

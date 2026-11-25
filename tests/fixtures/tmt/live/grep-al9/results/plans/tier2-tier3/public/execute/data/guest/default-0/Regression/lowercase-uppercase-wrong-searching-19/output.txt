@@ -1,0 +1,183 @@
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+grep-3.6-5.el9.x86_64
+:: [ 20:48:02 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:02 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:02 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:02 ] :: [  BEGIN   ] :: Creating tmp directory :: actually running 'TmpDir=$(mktemp -d)'
+:: [ 20:48:03 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'pushd /tmp/tmp.GTniEel8T9'
+/tmp/tmp.GTniEel8T9 /var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/lowercase-uppercase-wrong-searching
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.GTniEel8T9' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+tmt-report-result: saving /Setup output /tmp/tmp.dumvGInrbC into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Setup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-cz-01.log'
+A
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-cz-01.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-cz-02.log'
+A
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-cz-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'diff output-cz-01.log output-cz-02.log'
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'diff output-cz-01.log output-cz-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-us-01.log'
+A
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-us-01.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-us-02.log'
+A
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-us-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'diff output-us-01.log output-us-02.log'
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'diff output-us-01.log output-us-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'echo -e 'B
+a
+b
+
+c'| grep  '^[A-Z]*$' | tee output.log'
+B
+
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'echo -e 'B
+a
+b
+
+c'| grep  '^[A-Z]*$' | tee output.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should contain 'B' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'a' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'b' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'c' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 11 good, 0 bad
+::   RESULT: PASS (Test)
+
+tmt-report-result: saving /Test output /tmp/tmp.ZNsL526Ta0 into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Test/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/tmt-report-results.yaml
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Running 'popd'
+/var/tmp/tmt/run/plans/tier2-tier3/public/discover/default-0/tests/Regression/lowercase-uppercase-wrong-searching
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [  BEGIN   ] :: Removing tmp directory :: actually running 'rm -r /tmp/tmp.GTniEel8T9'
+:: [ 20:48:03 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+tmt-report-result: saving /Cleanup output /tmp/tmp.Ra95pkoyVv into /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/Cleanup/output.txt
+tmt-report-result: adding to the result file /var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/data/tmt-report-results.yaml
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   TEST PROTOCOL
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Test run ID   : 19
+    Package       : grep
+    Installed     : grep-3.6-5.el9.x86_64
+    beakerlib RPM : beakerlib-1.33.4-1.el9.noarch
+    Test name     : /Regression/lowercase-uppercase-wrong-searching
+    Test started  : 2026-11-24 20:48:02 UTC
+    Test finished : 2026-11-24 20:48:03 UTC (still running)
+    Test duration : 1 seconds
+    Distro        : AlmaLinux release 9.9 (Chartreuse Bobcat)
+    Hostname      : 3b5dcd923ecd
+    Architecture  : x86_64
+    CPUs          : 4 x Intel(R) Pentium(R) Gold 7505 @ 2.00GHz
+    RAM size      : 7479 MB
+    HDD size      : 69.93 GB
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Setup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:02 ] :: [   PASS   ] :: Checking for the presence of grep rpm 
+:: [ 20:48:02 ] :: [   LOG    ] :: Package versions:
+:: [ 20:48:02 ] :: [   LOG    ] ::   grep-3.6-5.el9.x86_64
+:: [ 20:48:03 ] :: [   PASS   ] :: Creating tmp directory (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'pushd /tmp/tmp.GTniEel8T9' (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Assertions: 3 good, 0 bad
+::   RESULT: PASS (Setup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-cz-01.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=cs_CZ.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-cz-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'diff output-cz-01.log output-cz-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]*$' | tee output-us-01.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'LANG=en_US.UTF-8 echo -e 'A
+b' | grep '^[A-Z]$' | tee output-us-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'diff output-us-01.log output-us-02.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'echo -e 'B
+a
+b
+
+c'| grep  '^[A-Z]*$' | tee output.log' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should contain 'B' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'a' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'b' 
+:: [ 20:48:03 ] :: [   PASS   ] :: File 'output.log' should not contain 'c' 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 11 good, 0 bad
+::   RESULT: PASS (Test)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Cleanup
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:03 ] :: [   PASS   ] :: Command 'popd' (Expected 0, got 0)
+:: [ 20:48:03 ] :: [   PASS   ] :: Removing tmp directory (Expected 0, got 0)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 0s
+::   Assertions: 2 good, 0 bad
+::   RESULT: PASS (Cleanup)
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   /Regression/lowercase-uppercase-wrong-searching
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: [ 20:48:03 ] :: [   LOG    ] :: Phases fingerprint:  GpTeNtEf
+:: [ 20:48:03 ] :: [   LOG    ] :: Asserts fingerprint: MDRRoC3/
+File '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19/journal.xml' already stored in '/var/tmp/tmt/run/plans/tier2-tier3/public/execute/data/guest/default-0/Regression/lowercase-uppercase-wrong-searching-19'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::   Duration: 1s
+::   Phases: 3 good, 0 bad
+::   OVERALL RESULT: PASS (/Regression/lowercase-uppercase-wrong-searching)
+
